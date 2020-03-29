@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DrinkDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Alcohol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Strength" Type="float" Nullable="false" />
+    <Property Name="img" Type="image" />
+  </EntityType>
+  <EntityType Name="Cocktail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Taste" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Occasion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Recipe" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="img" Type="image" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COCKTAILFINDER\COCKTAILFINDER\APP_DATA\DRINKDB.MDF.dbo.contains_alcohol' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="contains_alcohol">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="AlcoholID" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CocktailID" Type="int" Nullable="false" />
+    <Property Name="AlcoholID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COCKTAILFINDER\COCKTAILFINDER\APP_DATA\DRINKDB.MDF.dbo.contains_fruit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="contains_fruit">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="FruitID" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CocktailID" Type="int" Nullable="false" />
+    <Property Name="FruitID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COCKTAILFINDER\COCKTAILFINDER\APP_DATA\DRINKDB.MDF.dbo.contains_other' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="contains_other">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="OtherID" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CocktailID" Type="int" Nullable="false" />
+    <Property Name="OtherID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COCKTAILFINDER\COCKTAILFINDER\APP_DATA\DRINKDB.MDF.dbo.contains_softdrink' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="contains_softdrink">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="FruitID" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CocktailID" Type="int" Nullable="false" />
+    <Property Name="FruitID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COCKTAILFINDER\COCKTAILFINDER\APP_DATA\DRINKDB.MDF.dbo.contains_syrup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="contains_syrup">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="SoftDrinkID" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CocktailID" Type="int" Nullable="false" />
+    <Property Name="SoftDrinkID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fruit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="img" Type="image" />
+  </EntityType>
+  <EntityType Name="Liquor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AlcoholID" Type="int" Nullable="false" />
+    <Property Name="Flavour" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContainedSugar" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Other">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="img" Type="image" />
+  </EntityType>
+  <EntityType Name="SoftDrink">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="isSparkling" Type="bit" Nullable="false" />
+    <Property Name="img" Type="image" />
+  </EntityType>
+  <EntityType Name="Spirit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AlcoholID" Type="int" Nullable="false" />
+    <Property Name="Flavour" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Syrup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Taste" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="img" Type="image" />
+  </EntityType>
+  <Association Name="FK_contains_alcohol_AlcoholID">
+    <End Role="Alcohol" Type="Self.Alcohol" Multiplicity="1" />
+    <End Role="contains_alcohol" Type="Self.contains_alcohol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alcohol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_alcohol">
+        <PropertyRef Name="AlcoholID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_alcohol_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_alcohol" Type="Self.contains_alcohol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_alcohol">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_fruit_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_fruit" Type="Self.contains_fruit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_fruit">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_fruit_FruitID">
+    <End Role="Fruit" Type="Self.Fruit" Multiplicity="1" />
+    <End Role="contains_fruit" Type="Self.contains_fruit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fruit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_fruit">
+        <PropertyRef Name="FruitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_other_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_other" Type="Self.contains_other" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_other">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_other_OtherID">
+    <End Role="Other" Type="Self.Other" Multiplicity="1" />
+    <End Role="contains_other" Type="Self.contains_other" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Other">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_other">
+        <PropertyRef Name="OtherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_softdrink_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_softdrink" Type="Self.contains_softdrink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_softdrink">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_softdrink_SoftDrinkID">
+    <End Role="SoftDrink" Type="Self.SoftDrink" Multiplicity="1" />
+    <End Role="contains_softdrink" Type="Self.contains_softdrink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SoftDrink">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_softdrink">
+        <PropertyRef Name="FruitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_syrup_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_syrup" Type="Self.contains_syrup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_syrup">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_syrup_SyrupID">
+    <End Role="Syrup" Type="Self.Syrup" Multiplicity="1" />
+    <End Role="contains_syrup" Type="Self.contains_syrup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Syrup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_syrup">
+        <PropertyRef Name="SoftDrinkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Liquor">
+    <End Role="Alcohol" Type="Self.Alcohol" Multiplicity="1" />
+    <End Role="Liquor" Type="Self.Liquor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alcohol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Liquor">
+        <PropertyRef Name="AlcoholID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spirit">
+    <End Role="Alcohol" Type="Self.Alcohol" Multiplicity="1" />
+    <End Role="Spirit" Type="Self.Spirit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alcohol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spirit">
+        <PropertyRef Name="AlcoholID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DrinkDBModelStoreContainer">
+    <EntitySet Name="Alcohol" EntityType="Self.Alcohol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cocktail" EntityType="Self.Cocktail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fruit" EntityType="Self.Fruit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Liquor" EntityType="Self.Liquor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Other" EntityType="Self.Other" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SoftDrink" EntityType="Self.SoftDrink" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Spirit" EntityType="Self.Spirit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Syrup" EntityType="Self.Syrup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contains_alcohol" EntityType="Self.contains_alcohol" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [contains_alcohol].[Id] AS [Id], 
+    [contains_alcohol].[Amount] AS [Amount], 
+    [contains_alcohol].[Unit] AS [Unit], 
+    [contains_alcohol].[CocktailID] AS [CocktailID], 
+    [contains_alcohol].[AlcoholID] AS [AlcoholID]
+    FROM [dbo].[contains_alcohol] AS [contains_alcohol]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="contains_fruit" EntityType="Self.contains_fruit" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [contains_fruit].[Id] AS [Id], 
+    [contains_fruit].[Amount] AS [Amount], 
+    [contains_fruit].[Unit] AS [Unit], 
+    [contains_fruit].[CocktailID] AS [CocktailID], 
+    [contains_fruit].[FruitID] AS [FruitID]
+    FROM [dbo].[contains_fruit] AS [contains_fruit]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="contains_other" EntityType="Self.contains_other" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [contains_other].[Id] AS [Id], 
+    [contains_other].[Amount] AS [Amount], 
+    [contains_other].[Unit] AS [Unit], 
+    [contains_other].[CocktailID] AS [CocktailID], 
+    [contains_other].[OtherID] AS [OtherID]
+    FROM [dbo].[contains_other] AS [contains_other]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="contains_softdrink" EntityType="Self.contains_softdrink" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [contains_softdrink].[Id] AS [Id], 
+    [contains_softdrink].[Amount] AS [Amount], 
+    [contains_softdrink].[Unit] AS [Unit], 
+    [contains_softdrink].[CocktailID] AS [CocktailID], 
+    [contains_softdrink].[FruitID] AS [FruitID]
+    FROM [dbo].[contains_softdrink] AS [contains_softdrink]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="contains_syrup" EntityType="Self.contains_syrup" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [contains_syrup].[Id] AS [Id], 
+    [contains_syrup].[Amount] AS [Amount], 
+    [contains_syrup].[Unit] AS [Unit], 
+    [contains_syrup].[CocktailID] AS [CocktailID], 
+    [contains_syrup].[SoftDrinkID] AS [SoftDrinkID]
+    FROM [dbo].[contains_syrup] AS [contains_syrup]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_contains_alcohol_AlcoholID" Association="Self.FK_contains_alcohol_AlcoholID">
+      <End Role="Alcohol" EntitySet="Alcohol" />
+      <End Role="contains_alcohol" EntitySet="contains_alcohol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_alcohol_CocktailID" Association="Self.FK_contains_alcohol_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktail" />
+      <End Role="contains_alcohol" EntitySet="contains_alcohol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_fruit_CocktailID" Association="Self.FK_contains_fruit_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktail" />
+      <End Role="contains_fruit" EntitySet="contains_fruit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_fruit_FruitID" Association="Self.FK_contains_fruit_FruitID">
+      <End Role="Fruit" EntitySet="Fruit" />
+      <End Role="contains_fruit" EntitySet="contains_fruit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_other_CocktailID" Association="Self.FK_contains_other_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktail" />
+      <End Role="contains_other" EntitySet="contains_other" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_other_OtherID" Association="Self.FK_contains_other_OtherID">
+      <End Role="Other" EntitySet="Other" />
+      <End Role="contains_other" EntitySet="contains_other" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_softdrink_CocktailID" Association="Self.FK_contains_softdrink_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktail" />
+      <End Role="contains_softdrink" EntitySet="contains_softdrink" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_softdrink_SoftDrinkID" Association="Self.FK_contains_softdrink_SoftDrinkID">
+      <End Role="SoftDrink" EntitySet="SoftDrink" />
+      <End Role="contains_softdrink" EntitySet="contains_softdrink" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_syrup_CocktailID" Association="Self.FK_contains_syrup_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktail" />
+      <End Role="contains_syrup" EntitySet="contains_syrup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_syrup_SyrupID" Association="Self.FK_contains_syrup_SyrupID">
+      <End Role="Syrup" EntitySet="Syrup" />
+      <End Role="contains_syrup" EntitySet="contains_syrup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Liquor" Association="Self.FK_Liquor">
+      <End Role="Alcohol" EntitySet="Alcohol" />
+      <End Role="Liquor" EntitySet="Liquor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spirit" Association="Self.FK_Spirit">
+      <End Role="Alcohol" EntitySet="Alcohol" />
+      <End Role="Spirit" EntitySet="Spirit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

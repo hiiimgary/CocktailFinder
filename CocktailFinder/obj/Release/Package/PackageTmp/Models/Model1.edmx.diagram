@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd1da50a3d654481a76cf87b69e08a7c" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="DrinkDBModel.Alcohol" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.Cocktail" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.Fruit" Width="1.5" PointX="3.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.Liquor" Width="1.5" PointX="3" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.Other" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.SoftDrink" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.Spirit" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.Syrup" Width="1.5" PointX="3.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.contains_alcohol" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.contains_fruit" Width="1.5" PointX="6" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.contains_other" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.contains_softdrink" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrinkDBModel.contains_syrup" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_alcohol_AlcoholID" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_Liquor" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_Spirit" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_alcohol_CocktailID" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_fruit_CocktailID" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_other_CocktailID" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_softdrink_CocktailID" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_syrup_CocktailID" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_fruit_FruitID" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_other_OtherID" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_softdrink_SoftDrinkID" ManuallyRouted="false" />
+        <AssociationConnector Association="DrinkDBModel.FK_contains_syrup_SyrupID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

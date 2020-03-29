@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DrinkDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Alcohol">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Strength" Type="Double" Nullable="false" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="contains_alcohol" Relationship="Self.FK_contains_alcohol_AlcoholID" FromRole="Alcohol" ToRole="contains_alcohol" />
+    <NavigationProperty Name="Liquors" Relationship="Self.FK_Liquor" FromRole="Alcohol" ToRole="Liquor" />
+    <NavigationProperty Name="Spirits" Relationship="Self.FK_Spirit" FromRole="Alcohol" ToRole="Spirit" />
+  </EntityType>
+  <EntityType Name="Cocktail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Taste" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Occasion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Recipe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="contains_alcohol" Relationship="Self.FK_contains_alcohol_CocktailID" FromRole="Cocktail" ToRole="contains_alcohol" />
+    <NavigationProperty Name="contains_fruit" Relationship="Self.FK_contains_fruit_CocktailID" FromRole="Cocktail" ToRole="contains_fruit" />
+    <NavigationProperty Name="contains_other" Relationship="Self.FK_contains_other_CocktailID" FromRole="Cocktail" ToRole="contains_other" />
+    <NavigationProperty Name="contains_softdrink" Relationship="Self.FK_contains_softdrink_CocktailID" FromRole="Cocktail" ToRole="contains_softdrink" />
+    <NavigationProperty Name="contains_syrup" Relationship="Self.FK_contains_syrup_CocktailID" FromRole="Cocktail" ToRole="contains_syrup" />
+  </EntityType>
+  <EntityType Name="Fruit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="contains_fruit" Relationship="Self.FK_contains_fruit_FruitID" FromRole="Fruit" ToRole="contains_fruit" />
+  </EntityType>
+  <EntityType Name="Liquor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="AlcoholID" Type="Int32" Nullable="false" />
+    <Property Name="Flavour" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContainedSugar" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Alcohol" Relationship="Self.FK_Liquor" FromRole="Liquor" ToRole="Alcohol" />
+  </EntityType>
+  <EntityType Name="Other">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="contains_other" Relationship="Self.FK_contains_other_OtherID" FromRole="Other" ToRole="contains_other" />
+  </EntityType>
+  <EntityType Name="SoftDrink">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="isSparkling" Type="Boolean" Nullable="false" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="contains_softdrink" Relationship="Self.FK_contains_softdrink_SoftDrinkID" FromRole="SoftDrink" ToRole="contains_softdrink" />
+  </EntityType>
+  <EntityType Name="Spirit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="AlcoholID" Type="Int32" Nullable="false" />
+    <Property Name="Flavour" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Alcohol" Relationship="Self.FK_Spirit" FromRole="Spirit" ToRole="Alcohol" />
+  </EntityType>
+  <EntityType Name="Syrup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Taste" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="contains_syrup" Relationship="Self.FK_contains_syrup_SyrupID" FromRole="Syrup" ToRole="contains_syrup" />
+  </EntityType>
+  <EntityType Name="contains_alcohol">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="AlcoholID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CocktailID" Type="Int32" Nullable="false" />
+    <Property Name="AlcoholID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Alcohol" Relationship="Self.FK_contains_alcohol_AlcoholID" FromRole="contains_alcohol" ToRole="Alcohol" />
+    <NavigationProperty Name="Cocktail" Relationship="Self.FK_contains_alcohol_CocktailID" FromRole="contains_alcohol" ToRole="Cocktail" />
+  </EntityType>
+  <EntityType Name="contains_fruit">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="FruitID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CocktailID" Type="Int32" Nullable="false" />
+    <Property Name="FruitID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cocktail" Relationship="Self.FK_contains_fruit_CocktailID" FromRole="contains_fruit" ToRole="Cocktail" />
+    <NavigationProperty Name="Fruit" Relationship="Self.FK_contains_fruit_FruitID" FromRole="contains_fruit" ToRole="Fruit" />
+  </EntityType>
+  <EntityType Name="contains_other">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="OtherID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CocktailID" Type="Int32" Nullable="false" />
+    <Property Name="OtherID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cocktail" Relationship="Self.FK_contains_other_CocktailID" FromRole="contains_other" ToRole="Cocktail" />
+    <NavigationProperty Name="Other" Relationship="Self.FK_contains_other_OtherID" FromRole="contains_other" ToRole="Other" />
+  </EntityType>
+  <EntityType Name="contains_softdrink">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="FruitID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CocktailID" Type="Int32" Nullable="false" />
+    <Property Name="FruitID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cocktail" Relationship="Self.FK_contains_softdrink_CocktailID" FromRole="contains_softdrink" ToRole="Cocktail" />
+    <NavigationProperty Name="SoftDrink" Relationship="Self.FK_contains_softdrink_SoftDrinkID" FromRole="contains_softdrink" ToRole="SoftDrink" />
+  </EntityType>
+  <EntityType Name="contains_syrup">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Amount" />
+      <PropertyRef Name="Unit" />
+      <PropertyRef Name="CocktailID" />
+      <PropertyRef Name="SoftDrinkID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CocktailID" Type="Int32" Nullable="false" />
+    <Property Name="SoftDrinkID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cocktail" Relationship="Self.FK_contains_syrup_CocktailID" FromRole="contains_syrup" ToRole="Cocktail" />
+    <NavigationProperty Name="Syrup" Relationship="Self.FK_contains_syrup_SyrupID" FromRole="contains_syrup" ToRole="Syrup" />
+  </EntityType>
+  <Association Name="FK_contains_alcohol_AlcoholID">
+    <End Role="Alcohol" Type="Self.Alcohol" Multiplicity="1" />
+    <End Role="contains_alcohol" Type="Self.contains_alcohol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alcohol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_alcohol">
+        <PropertyRef Name="AlcoholID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Liquor">
+    <End Role="Alcohol" Type="Self.Alcohol" Multiplicity="1" />
+    <End Role="Liquor" Type="Self.Liquor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alcohol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Liquor">
+        <PropertyRef Name="AlcoholID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Spirit">
+    <End Role="Alcohol" Type="Self.Alcohol" Multiplicity="1" />
+    <End Role="Spirit" Type="Self.Spirit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alcohol">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Spirit">
+        <PropertyRef Name="AlcoholID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_alcohol_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_alcohol" Type="Self.contains_alcohol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_alcohol">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_fruit_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_fruit" Type="Self.contains_fruit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_fruit">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_other_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_other" Type="Self.contains_other" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_other">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_softdrink_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_softdrink" Type="Self.contains_softdrink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_softdrink">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_syrup_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="contains_syrup" Type="Self.contains_syrup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_syrup">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_fruit_FruitID">
+    <End Role="Fruit" Type="Self.Fruit" Multiplicity="1" />
+    <End Role="contains_fruit" Type="Self.contains_fruit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fruit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_fruit">
+        <PropertyRef Name="FruitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_other_OtherID">
+    <End Role="Other" Type="Self.Other" Multiplicity="1" />
+    <End Role="contains_other" Type="Self.contains_other" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Other">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_other">
+        <PropertyRef Name="OtherID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_softdrink_SoftDrinkID">
+    <End Role="SoftDrink" Type="Self.SoftDrink" Multiplicity="1" />
+    <End Role="contains_softdrink" Type="Self.contains_softdrink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SoftDrink">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_softdrink">
+        <PropertyRef Name="FruitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contains_syrup_SyrupID">
+    <End Role="Syrup" Type="Self.Syrup" Multiplicity="1" />
+    <End Role="contains_syrup" Type="Self.contains_syrup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Syrup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="contains_syrup">
+        <PropertyRef Name="SoftDrinkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DrinkDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alcohols" EntityType="Self.Alcohol" />
+    <EntitySet Name="Cocktails" EntityType="Self.Cocktail" />
+    <EntitySet Name="Fruits" EntityType="Self.Fruit" />
+    <EntitySet Name="Liquors" EntityType="Self.Liquor" />
+    <EntitySet Name="Other" EntityType="Self.Other" />
+    <EntitySet Name="SoftDrinks" EntityType="Self.SoftDrink" />
+    <EntitySet Name="Spirits" EntityType="Self.Spirit" />
+    <EntitySet Name="Syrups" EntityType="Self.Syrup" />
+    <EntitySet Name="contains_alcohol" EntityType="Self.contains_alcohol" />
+    <EntitySet Name="contains_fruit" EntityType="Self.contains_fruit" />
+    <EntitySet Name="contains_other" EntityType="Self.contains_other" />
+    <EntitySet Name="contains_softdrink" EntityType="Self.contains_softdrink" />
+    <EntitySet Name="contains_syrup" EntityType="Self.contains_syrup" />
+    <AssociationSet Name="FK_contains_alcohol_AlcoholID" Association="Self.FK_contains_alcohol_AlcoholID">
+      <End Role="Alcohol" EntitySet="Alcohols" />
+      <End Role="contains_alcohol" EntitySet="contains_alcohol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Liquor" Association="Self.FK_Liquor">
+      <End Role="Alcohol" EntitySet="Alcohols" />
+      <End Role="Liquor" EntitySet="Liquors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Spirit" Association="Self.FK_Spirit">
+      <End Role="Alcohol" EntitySet="Alcohols" />
+      <End Role="Spirit" EntitySet="Spirits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_alcohol_CocktailID" Association="Self.FK_contains_alcohol_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktails" />
+      <End Role="contains_alcohol" EntitySet="contains_alcohol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_fruit_CocktailID" Association="Self.FK_contains_fruit_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktails" />
+      <End Role="contains_fruit" EntitySet="contains_fruit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_other_CocktailID" Association="Self.FK_contains_other_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktails" />
+      <End Role="contains_other" EntitySet="contains_other" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_softdrink_CocktailID" Association="Self.FK_contains_softdrink_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktails" />
+      <End Role="contains_softdrink" EntitySet="contains_softdrink" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_syrup_CocktailID" Association="Self.FK_contains_syrup_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktails" />
+      <End Role="contains_syrup" EntitySet="contains_syrup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_fruit_FruitID" Association="Self.FK_contains_fruit_FruitID">
+      <End Role="Fruit" EntitySet="Fruits" />
+      <End Role="contains_fruit" EntitySet="contains_fruit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_other_OtherID" Association="Self.FK_contains_other_OtherID">
+      <End Role="Other" EntitySet="Other" />
+      <End Role="contains_other" EntitySet="contains_other" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_softdrink_SoftDrinkID" Association="Self.FK_contains_softdrink_SoftDrinkID">
+      <End Role="SoftDrink" EntitySet="SoftDrinks" />
+      <End Role="contains_softdrink" EntitySet="contains_softdrink" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contains_syrup_SyrupID" Association="Self.FK_contains_syrup_SyrupID">
+      <End Role="Syrup" EntitySet="Syrups" />
+      <End Role="contains_syrup" EntitySet="contains_syrup" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

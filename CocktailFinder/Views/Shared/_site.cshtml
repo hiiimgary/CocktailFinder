@@ -1,0 +1,35 @@
+﻿@using System.Web.Optimization
+@Styles.Render("~/Bundle/sass")
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="icon" href="~/Images/icon.png">
+    <title>Cocktail Finder</title>
+</head>
+<body>
+    <header>
+        <div id="logo"> <img src="~/Images/logo.png" /></div>
+        <div id="title">Catchy Name</div>
+        <div id="user-display">
+            <button id="sign-in-btn" onclick="location.href='@Url.Action("SignIn", "Home")'">SIGN IN</button>
+        </div>
+    </header>
+
+    <section>
+        <nav>
+            <button id="home-btn" onclick="location.href='@Url.Action("Home", "Home")'">Home</button>
+            <button id="search-btn" onclick="location.href='@Url.Action("Search", "Home")'">Search</button>
+            <button id="top-rated-btn" onclick="location.href='@Url.Action("TopRated", "Home")'">Top Rated</button>
+        </nav>
+        <main>
+            @RenderBody()
+        </main>
+    </section>
+
+    <img id="bg-image" src="~/Images/bg.jpg" />
+</body>
+</html>

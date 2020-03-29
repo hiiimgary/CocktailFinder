@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DrinkDBModelStoreContainer" CdmEntityContainer="DrinkDBEntities">
+    <EntitySetMapping Name="Alcohols">
+      <EntityTypeMapping TypeName="DrinkDBModel.Alcohol">
+        <MappingFragment StoreEntitySet="Alcohol">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Strength" ColumnName="Strength" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cocktails">
+      <EntityTypeMapping TypeName="DrinkDBModel.Cocktail">
+        <MappingFragment StoreEntitySet="Cocktail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Taste" ColumnName="Taste" />
+          <ScalarProperty Name="Occasion" ColumnName="Occasion" />
+          <ScalarProperty Name="Recipe" ColumnName="Recipe" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fruits">
+      <EntityTypeMapping TypeName="DrinkDBModel.Fruit">
+        <MappingFragment StoreEntitySet="Fruit">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Liquors">
+      <EntityTypeMapping TypeName="DrinkDBModel.Liquor">
+        <MappingFragment StoreEntitySet="Liquor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AlcoholID" ColumnName="AlcoholID" />
+          <ScalarProperty Name="Flavour" ColumnName="Flavour" />
+          <ScalarProperty Name="ContainedSugar" ColumnName="ContainedSugar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Other">
+      <EntityTypeMapping TypeName="DrinkDBModel.Other">
+        <MappingFragment StoreEntitySet="Other">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SoftDrinks">
+      <EntityTypeMapping TypeName="DrinkDBModel.SoftDrink">
+        <MappingFragment StoreEntitySet="SoftDrink">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="isSparkling" ColumnName="isSparkling" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Spirits">
+      <EntityTypeMapping TypeName="DrinkDBModel.Spirit">
+        <MappingFragment StoreEntitySet="Spirit">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AlcoholID" ColumnName="AlcoholID" />
+          <ScalarProperty Name="Flavour" ColumnName="Flavour" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Syrups">
+      <EntityTypeMapping TypeName="DrinkDBModel.Syrup">
+        <MappingFragment StoreEntitySet="Syrup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Taste" ColumnName="Taste" />
+          <ScalarProperty Name="img" ColumnName="img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contains_alcohol">
+      <EntityTypeMapping TypeName="DrinkDBModel.contains_alcohol">
+        <MappingFragment StoreEntitySet="contains_alcohol">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+          <ScalarProperty Name="AlcoholID" ColumnName="AlcoholID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contains_fruit">
+      <EntityTypeMapping TypeName="DrinkDBModel.contains_fruit">
+        <MappingFragment StoreEntitySet="contains_fruit">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+          <ScalarProperty Name="FruitID" ColumnName="FruitID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contains_other">
+      <EntityTypeMapping TypeName="DrinkDBModel.contains_other">
+        <MappingFragment StoreEntitySet="contains_other">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+          <ScalarProperty Name="OtherID" ColumnName="OtherID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contains_softdrink">
+      <EntityTypeMapping TypeName="DrinkDBModel.contains_softdrink">
+        <MappingFragment StoreEntitySet="contains_softdrink">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+          <ScalarProperty Name="FruitID" ColumnName="FruitID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contains_syrup">
+      <EntityTypeMapping TypeName="DrinkDBModel.contains_syrup">
+        <MappingFragment StoreEntitySet="contains_syrup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+          <ScalarProperty Name="SoftDrinkID" ColumnName="SoftDrinkID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
