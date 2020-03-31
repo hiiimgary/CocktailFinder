@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Strength" Type="float" Nullable="false" />
           <Property Name="img" Type="image" />
@@ -18,7 +18,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Taste" Type="nvarchar(max)" Nullable="false" />
@@ -26,6 +26,17 @@
           <Property Name="Recipe" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="img" Type="image" />
+        </EntityType>
+        <EntityType Name="connect_user_cocktail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CocktailID" Type="int" Nullable="false" />
+          <Property Name="IsLiked" Type="bit" Nullable="false" />
+          <Property Name="Rate" Type="int" Nullable="false" />
+          <Property Name="IsCreator" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COCKTAILFINDER\COCKTAILFINDER\APP_DATA\DRINKDB.MDF.dbo.contains_alcohol' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -37,7 +48,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="AlcoholID" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CocktailID" Type="int" Nullable="false" />
@@ -53,7 +64,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="FruitID" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CocktailID" Type="int" Nullable="false" />
@@ -69,7 +80,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="OtherID" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CocktailID" Type="int" Nullable="false" />
@@ -85,7 +96,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="FruitID" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CocktailID" Type="int" Nullable="false" />
@@ -101,7 +112,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="SoftDrinkID" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Amount" Type="float" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CocktailID" Type="int" Nullable="false" />
@@ -111,7 +122,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="img" Type="image" />
@@ -120,7 +131,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AlcoholID" Type="int" Nullable="false" />
           <Property Name="Flavour" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ContainedSugar" Type="float" Nullable="false" />
@@ -129,7 +140,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="img" Type="image" />
@@ -138,7 +149,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="isSparkling" Type="bit" Nullable="false" />
           <Property Name="img" Type="image" />
@@ -147,7 +158,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AlcoholID" Type="int" Nullable="false" />
           <Property Name="Flavour" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -156,11 +167,45 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Taste" Type="nvarchar(max)" Nullable="false" />
           <Property Name="img" Type="image" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="isVerified" Type="bit" Nullable="false" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_connect_user_cocktail_CocktailID">
+          <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+          <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cocktail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="connect_user_cocktail">
+              <PropertyRef Name="CocktailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_connect_user_cocktail_UserID">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="connect_user_cocktail">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_contains_alcohol_AlcoholID">
           <End Role="Alcohol" Type="Self.Alcohol" Multiplicity="1" />
           <End Role="contains_alcohol" Type="Self.contains_alcohol" Multiplicity="*" />
@@ -308,12 +353,14 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
         <EntityContainer Name="DrinkDBModelStoreContainer">
           <EntitySet Name="Alcohol" EntityType="Self.Alcohol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cocktail" EntityType="Self.Cocktail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="connect_user_cocktail" EntityType="Self.connect_user_cocktail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fruit" EntityType="Self.Fruit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Liquor" EntityType="Self.Liquor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Other" EntityType="Self.Other" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoftDrink" EntityType="Self.SoftDrink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Spirit" EntityType="Self.Spirit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Syrup" EntityType="Self.Syrup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="contains_alcohol" EntityType="Self.contains_alcohol" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [contains_alcohol].[Id] AS [Id], 
@@ -359,6 +406,14 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
     [contains_syrup].[SoftDrinkID] AS [SoftDrinkID]
     FROM [dbo].[contains_syrup] AS [contains_syrup]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_connect_user_cocktail_CocktailID" Association="Self.FK_connect_user_cocktail_CocktailID">
+            <End Role="Cocktail" EntitySet="Cocktail" />
+            <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_connect_user_cocktail_UserID" Association="Self.FK_connect_user_cocktail_UserID">
+            <End Role="User" EntitySet="User" />
+            <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
+          </AssociationSet>
           <AssociationSet Name="FK_contains_alcohol_AlcoholID" Association="Self.FK_contains_alcohol_AlcoholID">
             <End Role="Alcohol" EntitySet="Alcohol" />
             <End Role="contains_alcohol" EntitySet="contains_alcohol" />
@@ -417,7 +472,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Strength" Type="Double" Nullable="false" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -429,7 +484,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Taste" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -437,17 +492,31 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Property Name="Recipe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="connect_user_cocktail" Relationship="Self.FK_connect_user_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_user_cocktail" />
           <NavigationProperty Name="contains_alcohol" Relationship="Self.FK_contains_alcohol_CocktailID" FromRole="Cocktail" ToRole="contains_alcohol" />
           <NavigationProperty Name="contains_fruit" Relationship="Self.FK_contains_fruit_CocktailID" FromRole="Cocktail" ToRole="contains_fruit" />
           <NavigationProperty Name="contains_other" Relationship="Self.FK_contains_other_CocktailID" FromRole="Cocktail" ToRole="contains_other" />
           <NavigationProperty Name="contains_softdrink" Relationship="Self.FK_contains_softdrink_CocktailID" FromRole="Cocktail" ToRole="contains_softdrink" />
           <NavigationProperty Name="contains_syrup" Relationship="Self.FK_contains_syrup_CocktailID" FromRole="Cocktail" ToRole="contains_syrup" />
         </EntityType>
+        <EntityType Name="connect_user_cocktail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CocktailID" Type="Int32" Nullable="false" />
+          <Property Name="IsLiked" Type="Boolean" Nullable="false" />
+          <Property Name="Rate" Type="Int32" Nullable="false" />
+          <Property Name="IsCreator" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cocktail" Relationship="Self.FK_connect_user_cocktail_CocktailID" FromRole="connect_user_cocktail" ToRole="Cocktail" />
+          <NavigationProperty Name="User" Relationship="Self.FK_connect_user_cocktail_UserID" FromRole="connect_user_cocktail" ToRole="User" />
+        </EntityType>
         <EntityType Name="Fruit">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -457,7 +526,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AlcoholID" Type="Int32" Nullable="false" />
           <Property Name="Flavour" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ContainedSugar" Type="Double" Nullable="false" />
@@ -467,7 +536,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -477,7 +546,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="isSparkling" Type="Boolean" Nullable="false" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -487,7 +556,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AlcoholID" Type="Int32" Nullable="false" />
           <Property Name="Flavour" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -497,11 +566,22 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Taste" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="contains_syrup" Relationship="Self.FK_contains_syrup_SyrupID" FromRole="Syrup" ToRole="contains_syrup" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isVerified" Type="Boolean" Nullable="false" />
+          <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="connect_user_cocktail" Relationship="Self.FK_connect_user_cocktail_UserID" FromRole="User" ToRole="connect_user_cocktail" />
         </EntityType>
         <EntityType Name="contains_alcohol">
           <Key>
@@ -511,7 +591,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="AlcoholID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Amount" Type="Double" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CocktailID" Type="Int32" Nullable="false" />
@@ -527,7 +607,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="FruitID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Amount" Type="Double" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CocktailID" Type="Int32" Nullable="false" />
@@ -543,7 +623,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="OtherID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Amount" Type="Double" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CocktailID" Type="Int32" Nullable="false" />
@@ -559,7 +639,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="FruitID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Amount" Type="Double" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CocktailID" Type="Int32" Nullable="false" />
@@ -575,7 +655,7 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             <PropertyRef Name="CocktailID" />
             <PropertyRef Name="SoftDrinkID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Amount" Type="Double" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CocktailID" Type="Int32" Nullable="false" />
@@ -616,6 +696,18 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             </Principal>
             <Dependent Role="Spirit">
               <PropertyRef Name="AlcoholID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_connect_user_cocktail_CocktailID">
+          <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+          <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cocktail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="connect_user_cocktail">
+              <PropertyRef Name="CocktailID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -679,6 +771,18 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_connect_user_cocktail_UserID">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="connect_user_cocktail">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_contains_fruit_FruitID">
           <End Role="Fruit" Type="Self.Fruit" Multiplicity="1" />
           <End Role="contains_fruit" Type="Self.contains_fruit" Multiplicity="*" />
@@ -730,12 +834,14 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
         <EntityContainer Name="DrinkDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Alcohols" EntityType="Self.Alcohol" />
           <EntitySet Name="Cocktails" EntityType="Self.Cocktail" />
+          <EntitySet Name="connect_user_cocktail" EntityType="Self.connect_user_cocktail" />
           <EntitySet Name="Fruits" EntityType="Self.Fruit" />
           <EntitySet Name="Liquors" EntityType="Self.Liquor" />
           <EntitySet Name="Other" EntityType="Self.Other" />
           <EntitySet Name="SoftDrinks" EntityType="Self.SoftDrink" />
           <EntitySet Name="Spirits" EntityType="Self.Spirit" />
           <EntitySet Name="Syrups" EntityType="Self.Syrup" />
+          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="contains_alcohol" EntityType="Self.contains_alcohol" />
           <EntitySet Name="contains_fruit" EntityType="Self.contains_fruit" />
           <EntitySet Name="contains_other" EntityType="Self.contains_other" />
@@ -752,6 +858,10 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <AssociationSet Name="FK_Spirit" Association="Self.FK_Spirit">
             <End Role="Alcohol" EntitySet="Alcohols" />
             <End Role="Spirit" EntitySet="Spirits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_connect_user_cocktail_CocktailID" Association="Self.FK_connect_user_cocktail_CocktailID">
+            <End Role="Cocktail" EntitySet="Cocktails" />
+            <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
           </AssociationSet>
           <AssociationSet Name="FK_contains_alcohol_CocktailID" Association="Self.FK_contains_alcohol_CocktailID">
             <End Role="Cocktail" EntitySet="Cocktails" />
@@ -772,6 +882,10 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
           <AssociationSet Name="FK_contains_syrup_CocktailID" Association="Self.FK_contains_syrup_CocktailID">
             <End Role="Cocktail" EntitySet="Cocktails" />
             <End Role="contains_syrup" EntitySet="contains_syrup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_connect_user_cocktail_UserID" Association="Self.FK_connect_user_cocktail_UserID">
+            <End Role="User" EntitySet="Users" />
+            <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
           </AssociationSet>
           <AssociationSet Name="FK_contains_fruit_FruitID" Association="Self.FK_contains_fruit_FruitID">
             <End Role="Fruit" EntitySet="Fruits" />
@@ -817,6 +931,18 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
                 <ScalarProperty Name="Recipe" ColumnName="Recipe" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="connect_user_cocktail">
+            <EntityTypeMapping TypeName="DrinkDBModel.connect_user_cocktail">
+              <MappingFragment StoreEntitySet="connect_user_cocktail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+                <ScalarProperty Name="IsLiked" ColumnName="IsLiked" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="IsCreator" ColumnName="IsCreator" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -877,6 +1003,17 @@ warning 6002: The table/view 'C:\USERS\PATTA\DOCUMENTS\STUDIES\ONLAB\WEBPAGE\COC
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Taste" ColumnName="Taste" />
                 <ScalarProperty Name="img" ColumnName="img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DrinkDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="isVerified" ColumnName="isVerified" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

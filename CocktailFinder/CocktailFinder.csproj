@@ -138,101 +138,126 @@
     <Content Include="Images\icon.png" />
     <Content Include="Images\logo-main.png" />
     <Content Include="Images\logo.png" />
-    <Content Include="Models\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    <EntityDeploy Include="Models\DrinkDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DrinkDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DrinkDBModel.edmx.diagram">
+      <DependentUpon>DrinkDBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Models\DrinkDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>DrinkDBModel.edmx</DependentUpon>
+      <LastGenOutput>DrinkDBModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Models\DrinkDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DrinkDBModel.edmx</DependentUpon>
+      <LastGenOutput>DrinkDBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Alcohol.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cocktail.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\connect_user_cocktail.cs">
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\contains_alcohol.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\contains_fruit.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\contains_other.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\contains_softdrink.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\contains_syrup.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DrinkDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DrinkDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DrinkDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DrinkDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DrinkDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Extended\User.cs" />
     <Compile Include="Models\Fruit.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Liquor.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Other.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SoftDrink.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Spirit.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Syrup.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserCredentials.cs" />
+    <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="PasswordHashing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Styles\main.scss" />
     <Content Include="Views\Shared\_site.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\TopRated.cshtml" />
-    <Content Include="Views\Home\SignIn.cshtml" />
     <Content Include="Styles\_color.scss" />
     <Content Include="Styles\_home.scss" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Styles\_search.scss" />
     <None Include="Properties\PublishProfiles\hiimgaryCocktailFinder - Web Deploy.pubxml" />
+    <Content Include="Views\User\VerifyAccount.cshtml" />
+    <Content Include="Styles\_verifyAccount.scss" />
+    <Content Include="Views\User\Account.cshtml" />
+    <Content Include="Views\User\_Login.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\User\_Registration.cshtml" />
+    <Content Include="Styles\_account.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

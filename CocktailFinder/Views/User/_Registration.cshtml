@@ -1,0 +1,84 @@
+﻿@model CocktailFinder.Models.UserCredentials
+
+@{
+    ViewBag.Title = "Registration";
+}
+
+@using (Html.BeginForm("Registration", "User", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "registration-form" }))
+{
+    @Html.AntiForgeryToken()
+
+<div id="registration-form">
+    <div><h2 class="info-header">Create Account</h2></div>
+    @{ if (ViewBag.Page == "Registration" && ViewBag.Message != null)
+        {
+            if (ViewBag.Status)
+            {
+                <p class="success">@ViewBag.Message</p>
+            } else
+            {
+                <p class="error">@ViewBag.Message</p>
+            }
+
+        }
+    }
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserRegistration.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="textfield-container">
+            @Html.EditorFor(model => model.UserRegistration.Username, new { htmlAttributes = new { @class = "textfield" } })
+
+        </div>
+    </div>
+    <div class="val-msg">
+        @Html.ValidationMessageFor(model => model.UserRegistration.Username, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("Username", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserRegistration.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="textfield-container">
+            @Html.EditorFor(model => model.UserRegistration.Password, new { htmlAttributes = new { @class = "textfield" } })
+
+        </div>
+    </div>
+    <div class="val-msg">
+        @Html.ValidationMessageFor(model => model.UserRegistration.Password, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserRegistration.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="textfield-container">
+            @Html.EditorFor(model => model.UserRegistration.ConfirmPassword, new { htmlAttributes = new { @class = "textfield" } })
+
+        </div>
+    </div>
+    <div class="val-msg">
+        @Html.ValidationMessageFor(model => model.UserRegistration.ConfirmPassword, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserRegistration.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="textfield-container">
+            @Html.EditorFor(model => model.UserRegistration.Email, new { htmlAttributes = new { @class = "textfield" } })
+
+        </div>
+    </div>
+    <div class="val-msg">
+        @Html.ValidationMessageFor(model => model.UserRegistration.Email, "", new { @class = "text-danger" })
+        @Html.ValidationMessage("EmailExists", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="form-group">
+        <div class="form-btn">
+            <input type="submit" value="Create" class="registration-btn" />
+        </div>
+    </div>
+</div>
+}
+
+
+

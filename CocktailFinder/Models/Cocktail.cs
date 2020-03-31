@@ -17,6 +17,7 @@ namespace CocktailFinder.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cocktail()
         {
+            this.connect_user_cocktail = new HashSet<connect_user_cocktail>();
             this.contains_alcohol = new HashSet<contains_alcohol>();
             this.contains_fruit = new HashSet<contains_fruit>();
             this.contains_other = new HashSet<contains_other>();
@@ -33,6 +34,8 @@ namespace CocktailFinder.Models
         public string Description { get; set; }
         public byte[] img { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<connect_user_cocktail> connect_user_cocktail { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contains_alcohol> contains_alcohol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

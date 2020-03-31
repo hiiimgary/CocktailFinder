@@ -27,12 +27,14 @@ namespace CocktailFinder.Models
     
         public virtual DbSet<Alcohol> Alcohols { get; set; }
         public virtual DbSet<Cocktail> Cocktails { get; set; }
+        public virtual DbSet<connect_user_cocktail> connect_user_cocktail { get; set; }
         public virtual DbSet<Fruit> Fruits { get; set; }
         public virtual DbSet<Liquor> Liquors { get; set; }
         public virtual DbSet<Other> Other { get; set; }
         public virtual DbSet<SoftDrink> SoftDrinks { get; set; }
         public virtual DbSet<Spirit> Spirits { get; set; }
         public virtual DbSet<Syrup> Syrups { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<contains_alcohol> contains_alcohol { get; set; }
         public virtual DbSet<contains_fruit> contains_fruit { get; set; }
         public virtual DbSet<contains_other> contains_other { get; set; }

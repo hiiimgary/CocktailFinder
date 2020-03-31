@@ -82,7 +82,6 @@ C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\bin
 C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\bin\System.Web.Mvc.xml
 C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\bin\ru-ru\BundleTransformer.Core.resources.dll
-C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\obj\Debug\CocktailFinder.csprojAssemblyReference.cache
 C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\obj\Debug\CocktailFinder.csproj.CoreCompileInputs.cache
 C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\obj\Debug\CocktailFinder.csproj.CopyComplete
 C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\obj\Debug\CocktailFinder.dll
@@ -91,3 +90,4 @@ C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\bin
 C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\bin\EntityFramework.SqlServer.dll
 C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\bin\EntityFramework.xml
 C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\bin\EntityFramework.SqlServer.xml
+C:\Users\patta\Documents\Studies\Onlab\WebPage\CocktailFinder\CocktailFinder\obj\Debug\CocktailFinder.csprojAssemblyReference.cache
