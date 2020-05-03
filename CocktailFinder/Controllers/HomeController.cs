@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CocktailFinder.Controllers.DAL;
+using CocktailFinder.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,13 @@ namespace CocktailFinder.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly CocktailsRepository cocktailsRepository;
+        public HomeController()
+        {
+            
+            cocktailsRepository = new CocktailsRepository();
+        }
+
         // GET: Home
         public ActionResult Home()
         {
@@ -21,7 +30,8 @@ namespace CocktailFinder.Controllers
 
         public ActionResult TopRated()
         {
-            return View();
+            var cocktails = cocktailsRepository.List();
+            return View(cocktails);
         }
 
         public ActionResult SignIn()

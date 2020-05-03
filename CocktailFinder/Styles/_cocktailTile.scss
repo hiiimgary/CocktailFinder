@@ -1,0 +1,30 @@
+﻿@import './_color';
+
+.cocktail-wrapper {
+    height: 320px;
+    width: 280px;
+    background-color: $field;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    margin: 10px;
+
+    .cocktail-picture {
+        width: 260px;
+        height: 180px;
+    }
+
+    .title-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 10px;
+        h2{
+            
+        }
+        .rating img {
+            padding-top: 5px;
+            width: 100px;
+        }
+    }
+}

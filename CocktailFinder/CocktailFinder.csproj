@@ -134,6 +134,8 @@
       <DependentUpon>DrinkDB.mdf</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Images\assets\mojito.jpeg" />
+    <Content Include="Images\assets\Star_rating_4.5_of_5.png" />
     <Content Include="Images\bg.jpg" />
     <Content Include="Images\icon.png" />
     <Content Include="Images\logo-main.png" />
@@ -167,6 +169,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DAL\CocktailsRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -176,6 +179,9 @@
       <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cocktail.cs">
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\connect_ingredient_cocktail.cs">
       <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\connect_user_cocktail.cs">
@@ -215,6 +221,9 @@
     <Compile Include="Models\Fruit.cs">
       <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Ingredient.cs">
+      <DependentUpon>DrinkDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Liquor.cs">
       <DependentUpon>DrinkDBModel.tt</DependentUpon>
     </Compile>
@@ -235,6 +244,7 @@
     </Compile>
     <Compile Include="Models\UserCredentials.cs" />
     <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="Models\ViewModel\Cocktail.cs" />
     <Compile Include="PasswordHashing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -258,6 +268,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\User\_Registration.cshtml" />
     <Content Include="Styles\_account.scss" />
+    <Content Include="Views\Home\_CocktailTile.cshtml" />
+    <Content Include="Styles\_cocktailTile.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

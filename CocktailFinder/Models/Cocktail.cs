@@ -23,6 +23,7 @@ namespace CocktailFinder.Models
             this.contains_other = new HashSet<contains_other>();
             this.contains_softdrink = new HashSet<contains_softdrink>();
             this.contains_syrup = new HashSet<contains_syrup>();
+            this.connect_ingredient_cocktail = new HashSet<connect_ingredient_cocktail>();
         }
     
         public int Id { get; set; }
@@ -46,5 +47,7 @@ namespace CocktailFinder.Models
         public virtual ICollection<contains_softdrink> contains_softdrink { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contains_syrup> contains_syrup { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<connect_ingredient_cocktail> connect_ingredient_cocktail { get; set; }
     }
 }

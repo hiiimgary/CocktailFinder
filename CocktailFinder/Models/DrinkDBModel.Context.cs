@@ -40,5 +40,7 @@ namespace CocktailFinder.Models
         public virtual DbSet<contains_other> contains_other { get; set; }
         public virtual DbSet<contains_softdrink> contains_softdrink { get; set; }
         public virtual DbSet<contains_syrup> contains_syrup { get; set; }
+        public virtual DbSet<connect_ingredient_cocktail> connect_ingredient_cocktail { get; set; }
+        public virtual DbSet<Ingredient> Ingredients { get; set; }
     }
 }

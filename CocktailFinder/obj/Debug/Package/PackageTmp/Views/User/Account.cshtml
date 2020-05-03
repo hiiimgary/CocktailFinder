@@ -1,0 +1,21 @@
+﻿@model CocktailFinder.Models.UserCredentials
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_site.cshtml";
+}
+
+<section id="account">
+
+    @if (Request.IsAuthenticated)
+    {
+        <div id="haha-fk-u"><h2>You are already Signed In!</h2><p>Dumb mtfkr</p></div>
+    } else
+    {
+        @Html.Partial("_Login")
+        @Html.Partial("_Registration")
+    }
+
+</section>
+
+
+

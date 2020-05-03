@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_site.cshtml";
+}
+
+
+<section id="home">
+    <div id="details">
+        <h2>Catchy Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis pretium id at mauris dapibus nulla. Gravida tincidunt nisi bibendum scelerisque semper molestie tincidunt at. At pellentesque id orci scelerisque. Proin tortor, eu mauris gravida in lectus.</p>
+
+        @if (!Request.IsAuthenticated)
+        {
+            <button id="sign-up-btn" onclick="location.href='@Url.Action("Account", "User")'">SIGN UP</button>
+        }
+
+    </div>   
+
+    <div id="image"><img src="~/Images/logo-main.png" /></div>
+</section>
+
