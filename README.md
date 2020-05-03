@@ -1,5 +1,7 @@
 # Cocktail Finder 
 
+![](index.png)
+
 ## About
 
 This web application is about cocktail recipes. You can search for your favorite beverages, see the recipe, the ingredients etc. You can access more features if you sign up. Once you created your account you will receive a confirmation e-mail and you have to verify your account. After logging in new tabs will appear on the navigation bar such as "For you", "Creator", "Favorites".
@@ -21,7 +23,11 @@ In this section you can see the cocktails that you liked.
 
 ## Admin Interface
 
+![](admin_users.png)
+```
 The Application has a role system and administrators can access the Admin Interface where they can manage the users, add new ingredients.
+```
+![](admin_ingredients.png)
 
 
 ## ChangeLog
