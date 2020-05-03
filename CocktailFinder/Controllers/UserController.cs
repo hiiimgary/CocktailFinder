@@ -83,7 +83,7 @@ namespace CocktailFinder.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Registration([Bind(Exclude = "IsVerified, ActivationCode")] UserCredentials userCred)
+        public ActionResult Registration([Bind(Exclude = "IsVerified, ActivationCode, Role")] UserCredentials userCred)
         {
             ViewBag.Page = "Registration";
             User user = new User();
@@ -122,6 +122,7 @@ namespace CocktailFinder.Controllers
                 #endregion
 
                 user.isVerified = false;
+                user.Role = "user";
 
                 //cHxY2:)CoCkTaIlFiNdeR
 

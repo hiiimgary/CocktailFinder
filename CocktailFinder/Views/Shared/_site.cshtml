@@ -18,8 +18,15 @@
             @if (Request.IsAuthenticated)
             {
                 <p id="username">@HttpContext.Current.User.Identity.Name</p>
+
+                if (HttpContext.Current.User.IsInRole("admin"))
+                {
+                    <button id="admin-btn" onclick="location.href='@Url.Action("Index", "Admin")'">Admin Page</button>
+                }
+
                 using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logout-form" }))
                 {
+
                     <button id="log-out-btn">Log Out</button>
                     <script>
                         document.getElementById('log-out-btn').onclick(function () {

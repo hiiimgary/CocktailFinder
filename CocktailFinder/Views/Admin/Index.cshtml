@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CocktailFinder.Models.ViewModel.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/_adminLayout.cshtml";
+}
+
+<h2>User Manager</h2>
+<br />
+@if(ViewBag.Message != null)
+{
+    <h3>@ViewBag.message</h3><br />
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isVerified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.isVerified)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditUser", new { Name = item.Username }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "DeleteUser", new {  Name = item.Username })
+        </td>
+    </tr>
+}
+
+</table>

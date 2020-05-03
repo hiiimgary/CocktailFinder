@@ -60,7 +60,7 @@ header {
     }
 
     #user-display{
-        width: 450px;
+        width: 550px;
         display: flex;
         flex-direction: row;
         justify-content:flex-end;
@@ -72,7 +72,7 @@ header {
             margin-right: 20px;
             margin-top: 45px;
         }
-        #sign-in-btn, #log-out-btn{
+        #sign-in-btn, #log-out-btn, #admin-btn{
             background-color: $activeBtn;
             border: 0px;
             width: 210px;

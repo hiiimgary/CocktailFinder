@@ -32,5 +32,7 @@ namespace CocktailFinder.Models
         [Compare("Password", ErrorMessage = "Password and Confirm Password must be the same!")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+        [MaxLength(50)]
+        public string Role { get; set; }
     }
 }

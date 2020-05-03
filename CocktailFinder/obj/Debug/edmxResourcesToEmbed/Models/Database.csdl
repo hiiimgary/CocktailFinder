@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DrinkDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cocktail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Taste" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Occasion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Recipe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="connect_ingredient_cocktail" Relationship="Self.FK_connect_ingredient_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_ingredient_cocktail" />
+    <NavigationProperty Name="connect_user_cocktail" Relationship="Self.FK_connect_user_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_user_cocktail" />
+  </EntityType>
+  <EntityType Name="connect_ingredient_cocktail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CocktailID" Type="Int32" Nullable="false" />
+    <Property Name="IngredientID" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Double" Nullable="false" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cocktail" Relationship="Self.FK_connect_ingredient_cocktail_CocktailID" FromRole="connect_ingredient_cocktail" ToRole="Cocktail" />
+    <NavigationProperty Name="Ingredient" Relationship="Self.FK_connect_ingredient_cocktail_IngredientID" FromRole="connect_ingredient_cocktail" ToRole="Ingredient" />
+  </EntityType>
+  <EntityType Name="connect_user_cocktail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CocktailID" Type="Int32" Nullable="false" />
+    <Property Name="IsLiked" Type="Boolean" Nullable="false" />
+    <Property Name="Rate" Type="Int32" Nullable="false" />
+    <Property Name="IsCreator" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cocktail" Relationship="Self.FK_connect_user_cocktail_CocktailID" FromRole="connect_user_cocktail" ToRole="Cocktail" />
+    <NavigationProperty Name="User" Relationship="Self.FK_connect_user_cocktail_UserID" FromRole="connect_user_cocktail" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Property" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Alcohol" Type="Double" />
+    <NavigationProperty Name="connect_ingredient_cocktail" Relationship="Self.FK_connect_ingredient_cocktail_IngredientID" FromRole="Ingredient" ToRole="connect_ingredient_cocktail" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="isVerified" Type="Boolean" Nullable="false" />
+    <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="connect_user_cocktail" Relationship="Self.FK_connect_user_cocktail_UserID" FromRole="User" ToRole="connect_user_cocktail" />
+  </EntityType>
+  <Association Name="FK_connect_ingredient_cocktail_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="connect_ingredient_cocktail" Type="Self.connect_ingredient_cocktail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="connect_ingredient_cocktail">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_connect_user_cocktail_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="connect_user_cocktail">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_connect_ingredient_cocktail_IngredientID">
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+    <End Role="connect_ingredient_cocktail" Type="Self.connect_ingredient_cocktail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="connect_ingredient_cocktail">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_connect_user_cocktail_UserID">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="connect_user_cocktail">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DrinkDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cocktails" EntityType="Self.Cocktail" />
+    <EntitySet Name="connect_ingredient_cocktail" EntityType="Self.connect_ingredient_cocktail" />
+    <EntitySet Name="connect_user_cocktail" EntityType="Self.connect_user_cocktail" />
+    <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_connect_ingredient_cocktail_CocktailID" Association="Self.FK_connect_ingredient_cocktail_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktails" />
+      <End Role="connect_ingredient_cocktail" EntitySet="connect_ingredient_cocktail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_connect_user_cocktail_CocktailID" Association="Self.FK_connect_user_cocktail_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktails" />
+      <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_connect_ingredient_cocktail_IngredientID" Association="Self.FK_connect_ingredient_cocktail_IngredientID">
+      <End Role="Ingredient" EntitySet="Ingredients" />
+      <End Role="connect_ingredient_cocktail" EntitySet="connect_ingredient_cocktail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_connect_user_cocktail_UserID" Association="Self.FK_connect_user_cocktail_UserID">
+      <End Role="User" EntitySet="Users" />
+      <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
