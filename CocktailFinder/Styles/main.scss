@@ -1,6 +1,9 @@
 ﻿@import './_color';
 @import './_home';
 @import '_search.scss';
+@import '_verifyAccount.scss';
+@import '_account.scss';
+@import './_cocktailTile.scss';
 
 * {
     margin: 0;
@@ -51,24 +54,31 @@ header {
         position:absolute;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 40px;
+        font-size: $brandName;
         color: $text;
         margin-top: 32px;
     }
 
     #user-display{
-        width: 450px;
+        width: 550px;
         display: flex;
         flex-direction: row;
         justify-content:flex-end;
         //background-color:antiquewhite;
-        #sign-in-btn{
+
+        #username{
+            font-size: $title;
+            color: $text;
+            margin-right: 20px;
+            margin-top: 45px;
+        }
+        #sign-in-btn, #log-out-btn, #admin-btn{
             background-color: $activeBtn;
             border: 0px;
             width: 210px;
             height: 45px;
             color: $text;
-            font-size: 24px;
+            font-size: $title;
             margin-top: 40px;
             margin-right: 25px;
             cursor: pointer;
@@ -93,7 +103,7 @@ section {
             width: 190px;
             height: 80px;
             color: $text;
-            font-size: 24px;
+            font-size: $title;
             margin-bottom: 10px;
             cursor: pointer;
 

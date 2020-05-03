@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DrinkDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cocktail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Taste" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Occasion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Recipe" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="img" Type="image" />
+  </EntityType>
+  <EntityType Name="connect_ingredient_cocktail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CocktailID" Type="int" Nullable="false" />
+    <Property Name="IngredientID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="connect_user_cocktail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CocktailID" Type="int" Nullable="false" />
+    <Property Name="IsLiked" Type="bit" Nullable="false" />
+    <Property Name="Rate" Type="int" Nullable="false" />
+    <Property Name="IsCreator" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingredient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Property" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Alcohol" Type="float" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="isVerified" Type="bit" Nullable="false" />
+    <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_connect_ingredient_cocktail_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="connect_ingredient_cocktail" Type="Self.connect_ingredient_cocktail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="connect_ingredient_cocktail">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_connect_ingredient_cocktail_IngredientID">
+    <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+    <End Role="connect_ingredient_cocktail" Type="Self.connect_ingredient_cocktail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredient">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="connect_ingredient_cocktail">
+        <PropertyRef Name="IngredientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_connect_user_cocktail_CocktailID">
+    <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
+    <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cocktail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="connect_user_cocktail">
+        <PropertyRef Name="CocktailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_connect_user_cocktail_UserID">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="connect_user_cocktail">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DrinkDBModelStoreContainer">
+    <EntitySet Name="Cocktail" EntityType="Self.Cocktail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="connect_ingredient_cocktail" EntityType="Self.connect_ingredient_cocktail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="connect_user_cocktail" EntityType="Self.connect_user_cocktail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_connect_ingredient_cocktail_CocktailID" Association="Self.FK_connect_ingredient_cocktail_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktail" />
+      <End Role="connect_ingredient_cocktail" EntitySet="connect_ingredient_cocktail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_connect_ingredient_cocktail_IngredientID" Association="Self.FK_connect_ingredient_cocktail_IngredientID">
+      <End Role="Ingredient" EntitySet="Ingredient" />
+      <End Role="connect_ingredient_cocktail" EntitySet="connect_ingredient_cocktail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_connect_user_cocktail_CocktailID" Association="Self.FK_connect_user_cocktail_CocktailID">
+      <End Role="Cocktail" EntitySet="Cocktail" />
+      <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_connect_user_cocktail_UserID" Association="Self.FK_connect_user_cocktail_UserID">
+      <End Role="User" EntitySet="User" />
+      <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

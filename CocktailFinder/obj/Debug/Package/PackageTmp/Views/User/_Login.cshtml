@@ -1,0 +1,62 @@
+﻿@model CocktailFinder.Models.UserCredentials
+
+@{ 
+    ViewBag.Title = "Login";
+}
+
+
+
+@using (Html.BeginForm("Login", "User", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div id="login-form">
+        <div class="info-header"><h2>Log In</h2></div>
+        @{ if (ViewBag.Page == "Login" && ViewBag.Message != null)
+            {
+                <p class="error">@ViewBag.Message</p>
+            }
+        }
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserLogin.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="textfield-container">
+                @Html.EditorFor(model => model.UserLogin.Username, new { htmlAttributes = new { @class = "textfield" } })
+                @Html.ValidationMessageFor(model => model.UserLogin.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserLogin.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="textfield-container">
+                @Html.EditorFor(model => model.UserLogin.Password, new { htmlAttributes = new { @class = "textfield" } })
+                @Html.ValidationMessageFor(model => model.UserLogin.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group checkbox-wrapper">
+            @Html.LabelFor(model => model.UserLogin.RememberMe, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                <div class="checkbox-container">
+                    @Html.EditorFor(model => model.UserLogin.RememberMe, new { htmlAttributes = new { @class = "checkbox" } })
+                    @Html.ValidationMessageFor(model => model.UserLogin.RememberMe, "", new { @class = "text-danger" })
+                    <span class="checkmark"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-btn">
+                <input type="submit" value="Create" id="login-btn" />
+                
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+

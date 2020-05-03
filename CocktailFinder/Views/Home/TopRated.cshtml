@@ -1,8 +1,14 @@
-﻿
+﻿@model IEnumerable<CocktailFinder.Models.ViewModel.Cocktail>
 @{
     ViewBag.Title = "TopRated";
     Layout = "~/Views/Shared/_site.cshtml";
 }
 
-<h2>TopRated</h2>
+<section id="top-rated">
+    @foreach (var item in Model)
+    {
+        @Html.Partial("_CocktailTile", item);
+    }
+</section>
+
 

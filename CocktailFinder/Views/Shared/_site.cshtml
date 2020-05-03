@@ -15,7 +15,32 @@
         <div id="logo"> <img src="~/Images/logo.png" /></div>
         <div id="title">Catchy Name</div>
         <div id="user-display">
-            <button id="sign-in-btn" onclick="location.href='@Url.Action("SignIn", "Home")'">SIGN IN</button>
+            @if (Request.IsAuthenticated)
+            {
+                <p id="username">@HttpContext.Current.User.Identity.Name</p>
+
+                if (HttpContext.Current.User.IsInRole("admin"))
+                {
+                    <button id="admin-btn" onclick="location.href='@Url.Action("Index", "Admin")'">Admin Page</button>
+                }
+
+                using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logout-form" }))
+                {
+
+                    <button id="log-out-btn">Log Out</button>
+                    <script>
+                        document.getElementById('log-out-btn').onclick(function () {
+                            document.getElementById('logout-form').submit();
+                        });
+                        
+                    </script>
+                }
+
+            } else
+            {
+                <button id="sign-in-btn" onclick="location.href='@Url.Action("Account", "User")'">SIGN IN</button>
+            }
+
         </div>
     </header>
 
@@ -24,6 +49,12 @@
             <button id="home-btn" onclick="location.href='@Url.Action("Home", "Home")'">Home</button>
             <button id="search-btn" onclick="location.href='@Url.Action("Search", "Home")'">Search</button>
             <button id="top-rated-btn" onclick="location.href='@Url.Action("TopRated", "Home")'">Top Rated</button>
+            @if (Request.IsAuthenticated)
+            {
+                <button id="for-you-btn" onclick="location.href='@Url.Action("Home", "Home")'">For You</button>
+                <button id="favorites-btn" onclick="location.href='@Url.Action("Search", "Home")'">Favorites</button>
+                <button id="creator-btn" onclick="location.href='@Url.Action("TopRated", "Home")'">Creator</button>
+            }
         </nav>
         <main>
             @RenderBody()
@@ -31,5 +62,6 @@
     </section>
 
     <img id="bg-image" src="~/Images/bg.jpg" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
 </body>
 </html>

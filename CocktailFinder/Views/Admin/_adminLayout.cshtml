@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@ViewBag.Title - CocktailFinder</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="padding-top: 70px;">
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        @Html.ActionLink("Cocktail Finder", "Home", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" onclick="location.href='@Url.Action("Index", "Admin")'">Users</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="location.href='@Url.Action("Cocktails", "Admin")'">Cocktails</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="location.href='@Url.Action("Ingredients", "Admin")'">Ingredients</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - CocktailFinder Admin page</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

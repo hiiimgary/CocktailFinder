@@ -1,0 +1,136 @@
+﻿@import '_color.scss';
+
+#account{
+    color: $text;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    #haha-fk-u{
+        transform: translateY(-120px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+}
+
+#login-form, #registration-form {
+    transform: translateY(-50px);
+    //display:flex;
+    //flex-direction: column;
+    //justify-content: space-between;
+    .success {
+        color: forestgreen;
+        text-align: center;
+        
+    }
+
+    .error {
+        color: $activeBtn;
+        font-size: $title;
+        text-align: center;
+    }
+
+    .info-header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+
+    h2 {
+        font-weight: normal;
+        font-size: $header;
+        //justify-content: center;
+    }
+
+    .val-msg {
+        display: flex;
+        justify-content: flex-end;
+        color: $activeBtn;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 20px;
+        align-items: center;
+
+
+        .form-btn {
+            margin-top: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            input[type=submit] {
+                width: 250px;
+                height: 45px;
+                background-color: $activeBtn;
+                color: $text;
+                font-size: $title;
+                border: 0;
+            }
+        }
+
+        label {
+            font-size: $title;
+            margin-right: 10px;
+        }
+
+        .textfield {
+            background-color: $accountField;
+            color: $text;
+            opacity: 0.8;
+            border: 0;
+            width: 250px;
+            height: 45px;
+            font-size: $title;
+
+            &:focus {
+                outline-color: $activeBtn;
+            }
+        }
+    }
+}
+
+#login-form {
+    margin-right: 50px;
+
+    .checkbox-wrapper {
+        position: relative;
+    }
+
+    .checkbox-container {
+
+        .checkbox:checked ~ .checkmark {
+            background-color: $activeBtn;
+        }
+
+        .checkbox {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 45px;
+            width: 45px;
+            background-color: $activeBtn;
+            color: $activeBtn;
+            opacity: 0.2;
+            
+
+          
+        }
+
+        
+
+       
+    }
+}
+
+#registration-form {
+}

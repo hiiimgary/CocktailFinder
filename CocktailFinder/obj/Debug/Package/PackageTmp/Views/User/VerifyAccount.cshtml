@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/Shared/_site.cshtml";
+}
+
+<section id="verify-email">
+    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+    {
+        <div id="success">
+            <h2>Your account has been successfully activated!</h2>
+            <p>Log in to browse and find your favourite refreshments!</p>
+        </div>
+    } else
+    {
+        <div id="error">
+            <h2>Something went wrong!</h2>
+            <p>@ViewBag.Message</p>
+        </div>
+    }
+</section>
