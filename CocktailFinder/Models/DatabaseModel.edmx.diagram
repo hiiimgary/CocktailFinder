@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f4a16b2fc08a4a308c881700437c2aa3" Name="Diagram1">
-        <EntityTypeShape EntityType="DrinkDBModel.Cocktail" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DrinkDBModel.connect_ingredient_cocktail" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DrinkDBModel.connect_user_cocktail" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DrinkDBModel.Ingredient" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DrinkDBModel.User" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
-        <AssociationConnector Association="DrinkDBModel.FK_connect_ingredient_cocktail_CocktailID" ManuallyRouted="false" />
-        <AssociationConnector Association="DrinkDBModel.FK_connect_user_cocktail_CocktailID" ManuallyRouted="false" />
-        <AssociationConnector Association="DrinkDBModel.FK_connect_ingredient_cocktail_IngredientID" ManuallyRouted="false" />
-        <AssociationConnector Association="DrinkDBModel.FK_connect_user_cocktail_UserID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DrinkDBModel.Cocktail" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="DrinkDBModel.connect_ingredient_cocktail" Width="1.5" PointX="6" PointY="2.75" />
+        <EntityTypeShape EntityType="DrinkDBModel.connect_user_cocktail" Width="1.5" PointX="3" PointY="2.625" />
+        <EntityTypeShape EntityType="DrinkDBModel.Ingredient" Width="1.5" PointX="3.75" PointY="7.875" />
+        <EntityTypeShape EntityType="DrinkDBModel.User" Width="1.5" PointX="0.75" PointY="7.75" />
+        <AssociationConnector Association="DrinkDBModel.FK_connect_ingredient_cocktail_CocktailID" />
+        <AssociationConnector Association="DrinkDBModel.FK_connect_user_cocktail_CocktailID" />
+        <AssociationConnector Association="DrinkDBModel.FK_connect_ingredient_cocktail_IngredientID" />
+        <AssociationConnector Association="DrinkDBModel.FK_connect_user_cocktail_UserID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -83,6 +83,15 @@ The Application has a role system and administrators can access the Admin Interf
     - Delete, Edit implemented for Users  (<= Edit User not working yet for some reason)
 - Cocktail, Ingredient, User Repositories created to access the database conviniently.
 
+```
+2020.05.06 - Hardest part so far...  
+```
+- Added new attribute to Ingredients table (units)
+- Added new attribute to Cocktail table (Video)
+- New ViewModel created for Creator page
+- New Repository created for Creator page
+- Prototype for Creator page (no SCSS, just logic)
+
 ## TODO
 - Add logic to Search page
 - Add page for search result

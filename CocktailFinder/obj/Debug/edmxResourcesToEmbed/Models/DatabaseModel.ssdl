@@ -11,7 +11,8 @@
     <Property Name="Occasion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Recipe" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="img" Type="image" />
+    <Property Name="img" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Embed" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="connect_ingredient_cocktail">
     <Key>
@@ -43,6 +44,7 @@
     <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Property" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Alcohol" Type="float" />
+    <Property Name="Units" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>

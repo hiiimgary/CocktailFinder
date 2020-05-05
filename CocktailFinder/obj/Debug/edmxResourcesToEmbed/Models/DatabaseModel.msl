@@ -4,60 +4,62 @@
     <EntitySetMapping Name="Cocktails">
       <EntityTypeMapping TypeName="DrinkDBModel.Cocktail">
         <MappingFragment StoreEntitySet="Cocktail">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Taste" ColumnName="Taste" />
-          <ScalarProperty Name="Occasion" ColumnName="Occasion" />
-          <ScalarProperty Name="Recipe" ColumnName="Recipe" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Embed" ColumnName="Embed" />
           <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Recipe" ColumnName="Recipe" />
+          <ScalarProperty Name="Occasion" ColumnName="Occasion" />
+          <ScalarProperty Name="Taste" ColumnName="Taste" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="connect_ingredient_cocktail">
       <EntityTypeMapping TypeName="DrinkDBModel.connect_ingredient_cocktail">
         <MappingFragment StoreEntitySet="connect_ingredient_cocktail">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
-          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+          <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="connect_user_cocktail">
       <EntityTypeMapping TypeName="DrinkDBModel.connect_user_cocktail">
         <MappingFragment StoreEntitySet="connect_user_cocktail">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
-          <ScalarProperty Name="IsLiked" ColumnName="IsLiked" />
-          <ScalarProperty Name="Rate" ColumnName="Rate" />
           <ScalarProperty Name="IsCreator" ColumnName="IsCreator" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="IsLiked" ColumnName="IsLiked" />
+          <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Ingredients">
       <EntityTypeMapping TypeName="DrinkDBModel.Ingredient">
         <MappingFragment StoreEntitySet="Ingredient">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
-          <ScalarProperty Name="Property" ColumnName="Property" />
+          <ScalarProperty Name="Units" ColumnName="Units" />
           <ScalarProperty Name="Alcohol" ColumnName="Alcohol" />
+          <ScalarProperty Name="Property" ColumnName="Property" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="DrinkDBModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="isVerified" ColumnName="isVerified" />
-          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
           <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+          <ScalarProperty Name="isVerified" ColumnName="isVerified" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

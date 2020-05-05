@@ -24,14 +24,6 @@ namespace CocktailFinder.Controllers.DAL
         {
             return new Models.ViewModel.Cocktail(v.Id, v.Name, v.Type, v.Taste, v.Occasion, v.Recipe, v.Description, v.img);
         }
-        private static Models.ViewModel.Ingredient ToModel(Ingredient i)
-        {
-            double alc = 0;
-            if(i.Alcohol != null)
-            {
-                alc = (double) i.Alcohol;
-            }
-            return new Models.ViewModel.Ingredient(i.Id, i.Name, i.Type, i.Property, alc);
-        }
+
     }
 }

@@ -1,6 +1,12 @@
 ﻿@model CocktailFinder.Models.ViewModel.Cocktail
 
 <div class="cocktail-wrapper">
+
+    @{ 
+        var base64 = Convert.ToBase64String(Model.img);
+        var imgscr = string.Format("data:image/gif;base64,{0}", base64);
+    }
+
     <img src="~/Images/assets/mojito.jpeg" class="cocktail-picture"/>
     <div class="title-wrapper">
         <div><h2>@Model.Name</h2></div>

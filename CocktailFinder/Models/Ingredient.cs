@@ -25,6 +25,7 @@ namespace CocktailFinder.Models
         public string Type { get; set; }
         public string Property { get; set; }
         public Nullable<double> Alcohol { get; set; }
+        public string Units { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<connect_ingredient_cocktail> connect_ingredient_cocktail { get; set; }

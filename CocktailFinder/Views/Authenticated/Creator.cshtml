@@ -1,0 +1,203 @@
+﻿@model CocktailFinder.Models.ViewModel.Creator
+
+@{
+    ViewBag.Title = "Creator";
+    //Layout = "~/Views/Shared/_site.cshtml";
+}
+
+<h2>Creator</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div id="columns">
+        <div id="left">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.isLong, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.isLong)
+                        @Html.ValidationMessageFor(model => model.isLong, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-spirit">Spirits</button>
+            <button id="btn-liquor">Liquors</button>
+            <button id="btn-syrup">Syrups</button>
+            <button id="btn-softdrink">Soft Drinks</button>
+            <button id="btn-fruit">Fruits</button>
+            <button id="btn-other">Others</button>
+        </div>
+        <div id="right">
+            <div id="ingredients-list">
+
+                <div class="ingredients" id="spirits" hidden>
+                    <br />
+                    <h4>Spirits</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "spirit")
+                        {
+                            <p>@item.Name</p>
+                        }
+                    }
+                </div>
+
+                <div class="ingredients" id="liquors" hidden>
+                    <br />
+                    <h4>Liquors</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "liquor")
+                        {
+                            <p>@item.Name</p>
+                        }
+                    }
+                </div>
+
+                <div class="ingredients" id="syrups" hidden>
+                    <br />
+                    <h4>Syrups</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "syrup")
+                        {
+                            <p>@item.Name</p>
+                        }
+                    }
+                </div>
+
+                <div class="ingredients" id="softdrinks" hidden>
+                    <br />
+                    <h4>Soft Drinks</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "softdrink")
+                        {
+                            <p>@item.Name</p>
+                        }
+                    }
+                </div>
+
+                <div class="ingredients" id="fruits" hidden>
+                    <br />
+                    <h4>Fruits</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "fruit")
+                        {
+                            <p>@item.Name</p>
+                        }
+                    }
+                </div>
+
+                <div class="ingredients" id="others" hidden>
+                    <br />
+                    <h4>Others</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "other")
+                        {
+                            <p>@item.Name</p>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Taste, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Taste, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Taste, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Recipe, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Recipe, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Recipe, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    document.getElementById("btn-spirit").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("spirits");
+    });
+    document.getElementById("btn-liquor").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("liquors");
+    });
+    document.getElementById("btn-syrup").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("syrups");
+    });
+    document.getElementById("btn-softdrink").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("softdrinks");
+    });
+    document.getElementById("btn-fruit").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("fruits");
+    });
+    document.getElementById("btn-other").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("others");
+    });
+
+    function toggle(id) {
+        $(".ingredients").hide();
+        $('#' + id).show();       
+    }
+</script>
+

@@ -272,7 +272,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AuthenticatedController.cs" />
     <Compile Include="Controllers\DAL\CocktailsRepository.cs" />
+    <Compile Include="Controllers\DAL\CreatorRepository.cs" />
     <Compile Include="Controllers\DAL\IngredientsRepository.cs" />
     <Compile Include="Controllers\DAL\UserRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -304,6 +306,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Extended\Ingredient.cs" />
     <Compile Include="Models\Extended\User.cs" />
     <Compile Include="Models\Ingredient.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
@@ -315,6 +318,7 @@
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRoleProvider.cs" />
     <Compile Include="Models\ViewModel\Cocktail.cs" />
+    <Compile Include="Models\ViewModel\Creator.cs" />
     <Compile Include="Models\ViewModel\Ingredient.cs" />
     <Compile Include="Models\ViewModel\User.cs" />
     <Compile Include="PasswordHashing.cs" />
@@ -358,6 +362,7 @@
     <Content Include="Views\Admin\Ingredients.cshtml" />
     <Content Include="Views\Admin\CreateIngredient.cshtml" />
     <Content Include="Views\Admin\EditIngredient.cshtml" />
+    <Content Include="Views\Authenticated\Creator.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

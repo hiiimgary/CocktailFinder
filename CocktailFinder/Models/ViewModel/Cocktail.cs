@@ -27,5 +27,7 @@ namespace CocktailFinder.Models.ViewModel
         public string Recipe { get; set; }
         public string Description { get; set; }
         public byte[] img { get; set; }
+        public string Embed { get; set; }
+
     }
 }
