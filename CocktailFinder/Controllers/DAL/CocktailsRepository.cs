@@ -22,7 +22,7 @@ namespace CocktailFinder.Controllers.DAL
 
         private static Models.ViewModel.Cocktail ToModel(Cocktail v)
         {
-            return new Models.ViewModel.Cocktail(v.Id, v.Name, v.Type, v.Taste, v.Occasion, v.Recipe, v.Description, v.img);
+            return new Models.ViewModel.Cocktail(v.Id, v.Name, v.Type, v.Taste, v.Occasion, v.Recipe, v.Description, v.img, v.Embed, v.Verified);
         }
 
     }

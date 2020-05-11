@@ -7,7 +7,7 @@ namespace CocktailFinder.Models.ViewModel
 {
     public class Cocktail
     {
-        public Cocktail(int id, string name, string type, string taste, string occasion, string recipe, string description, byte[] img)
+        public Cocktail(int id, string name, string type, string taste, string occasion, string recipe, string description, byte[] img, string embed, bool verified)
         {
             this.Id = id;
             this.Name = name;
@@ -17,6 +17,8 @@ namespace CocktailFinder.Models.ViewModel
             this.Recipe = recipe;
             this.Description = description;
             this.img = img;
+            this.Embed = embed;
+            this.Verified = verified;
         }
 
         public int Id { get; set; }
@@ -28,6 +30,7 @@ namespace CocktailFinder.Models.ViewModel
         public string Description { get; set; }
         public byte[] img { get; set; }
         public string Embed { get; set; }
+        public bool Verified { get; set; }
 
     }
 }

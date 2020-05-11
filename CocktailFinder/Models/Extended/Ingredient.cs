@@ -19,8 +19,9 @@ namespace CocktailFinder.Models.Extended
             this.Units = units.Split(' ');
 
             this.Amount = amount;
-            this.Unit = unit;
+            this.UsedUnit = unit;
             this.isUsed = isUsed;
+            
         }
 
         public int Id { get; set; }
@@ -35,9 +36,9 @@ namespace CocktailFinder.Models.Extended
         public string Property { get; set; }
         public double Alcohol { get; set; }
         public string[] Units { get; set; }
+        public bool isUsed { get; set; }
 
         public int Amount { get; set; }
-        public string Unit { get; set; }
-        public bool isUsed { get; set; }
+        public string UsedUnit { get; set; }
     }
 }

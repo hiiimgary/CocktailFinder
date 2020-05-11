@@ -38,6 +38,7 @@
     <Property Name="Embed" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="connect_ingredient_cocktail" Relationship="DrinkDBModel.FK_connect_ingredient_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_ingredient_cocktail" />
     <NavigationProperty Name="connect_user_cocktail" Relationship="DrinkDBModel.FK_connect_user_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_user_cocktail" />
+    <Property Name="Verified" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="connect_ingredient_cocktail">
     <Key>

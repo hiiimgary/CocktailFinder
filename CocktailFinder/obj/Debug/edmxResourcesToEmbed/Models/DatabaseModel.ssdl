@@ -13,6 +13,7 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="img" Type="varbinary(max)" Nullable="false" />
     <Property Name="Embed" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Verified" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="connect_ingredient_cocktail">
     <Key>

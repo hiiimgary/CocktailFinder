@@ -143,6 +143,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\assets\mojito.jpeg" />
+    <Content Include="Images\assets\remove.png" />
     <Content Include="Images\assets\Star_rating_4.5_of_5.png" />
     <Content Include="Images\bg.jpg" />
     <Content Include="Images\icon.png" />
@@ -323,6 +324,7 @@
     <Compile Include="Models\ViewModel\User.cs" />
     <Compile Include="PasswordHashing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\ValidateFileAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -363,6 +365,7 @@
     <Content Include="Views\Admin\CreateIngredient.cshtml" />
     <Content Include="Views\Admin\EditIngredient.cshtml" />
     <Content Include="Views\Authenticated\Creator.cshtml" />
+    <Content Include="Views\Authenticated\_CreatorForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

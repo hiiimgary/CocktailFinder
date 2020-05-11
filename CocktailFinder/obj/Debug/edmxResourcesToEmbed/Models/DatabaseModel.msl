@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Cocktails">
       <EntityTypeMapping TypeName="DrinkDBModel.Cocktail">
         <MappingFragment StoreEntitySet="Cocktail">
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
           <ScalarProperty Name="Embed" ColumnName="Embed" />
           <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="Description" ColumnName="Description" />

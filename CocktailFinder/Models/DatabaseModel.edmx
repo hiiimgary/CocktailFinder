@@ -18,6 +18,7 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="img" Type="varbinary(max)" Nullable="false" />
           <Property Name="Embed" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Verified" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="connect_ingredient_cocktail">
           <Key>
@@ -175,6 +176,7 @@
           <Property Name="Embed" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="connect_ingredient_cocktail" Relationship="DrinkDBModel.FK_connect_ingredient_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_ingredient_cocktail" />
           <NavigationProperty Name="connect_user_cocktail" Relationship="DrinkDBModel.FK_connect_user_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_user_cocktail" />
+          <Property Name="Verified" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="connect_ingredient_cocktail">
           <Key>
@@ -282,6 +284,7 @@
           <EntitySetMapping Name="Cocktails">
             <EntityTypeMapping TypeName="DrinkDBModel.Cocktail">
               <MappingFragment StoreEntitySet="Cocktail">
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
                 <ScalarProperty Name="Embed" ColumnName="Embed" />
                 <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
