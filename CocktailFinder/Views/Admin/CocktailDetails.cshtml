@@ -1,0 +1,101 @@
+﻿@model CocktailFinder.Models.ViewModel.Cocktail
+
+@{
+    ViewBag.Title = "CocktailDetails";
+    Layout = "~/Views/Admin/_adminLayout.cshtml";
+}
+
+<h2>Cocktail Details</h2>
+
+@if(ViewBag.message != null)
+{
+    <h4>@ViewBag.message</h4>
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Image
+        </dt>
+
+        <dd>
+            @{
+                var base64 = Convert.ToBase64String(Model.img);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                <img src='@imgsrc' style="max-width: 500px" />
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taste)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taste)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Occasion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occasion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recipe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recipe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Embed)
+        </dt>
+
+        <dd>
+            <iframe width="560" height="315" src="@string.Format(Model.Embed)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Verified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Verified)
+            @if (!Model.Verified)
+            {
+                @Html.ActionLink("Verify", "CocktailConfirm", new { id = Model.Id })
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Cocktails")
+</p>

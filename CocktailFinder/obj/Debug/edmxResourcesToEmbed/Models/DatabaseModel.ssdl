@@ -14,6 +14,9 @@
     <Property Name="img" Type="varbinary(max)" Nullable="false" />
     <Property Name="Embed" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Verified" Type="bit" Nullable="false" />
+    <Property Name="Total_Votes" Type="int" />
+    <Property Name="Number_of_Votes" Type="int" />
+    <Property Name="vote_average" Type="float" />
   </EntityType>
   <EntityType Name="connect_ingredient_cocktail">
     <Key>

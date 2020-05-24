@@ -1,71 +1,141 @@
-﻿
+﻿@model CocktailFinder.Models.ViewModel.SearchModel
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_site.cshtml";
 }
 
 <section id="search">
-    <div id="wrapper">
-        <form action="" method="post">
-            <div id="left">
-                <div class="row">
-                    <p>Type</p>
-                    <div id="radio">
-                        <input type="radio" id="radio-shot" name="radioType" value="Shot" checked>
-                        <label for="radio-shot">Shot</label>
+    @using (Html.BeginForm("SearchCocktails", "Home", FormMethod.Get))
+    {
+        <div id="wrapper">
+            <form action="" method="post">
+                <div id="left">
+                    <div class="row">
+                        <p>Type</p>
+                        <div id="radio">
+                            <input type="radio" id="radio-shot" name="isLong" value="Shot" checked>
+                            <label for="radio-shot">Shot</label>
 
-                        <input type="radio" id="radio-long" name="radioType" value="Long">
-                        <label for="radio-long">Long</label>
+                            <input type="radio" id="radio-long" name="isLong" value="Long">
+                            <label for="radio-long">Long</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p>Spirit</p>
+                        <button id="btn-spirit">Placeholder</button>
+                    </div>
+                    <div class="row">
+                        <p>Liquor</p>
+                        <button id="btn-liquor">Placeholder</button>
+                    </div>
+                    <div class="row">
+                        <p>Syrup</p>
+                        <button id="btn-syrup">Placeholder</button>
+                    </div>
+                    <div class="row">
+                        <p>Soft Drink</p>
+                        <button id="btn-softdrink">Placeholder</button>
+                    </div>
+                    <div class="row">
+                        <p>Fruit</p>
+                        <button id="btn-fruit">Placeholder</button>
+                    </div>
+                    <div class="row">
+                        <p>Other</p>
+                        <button id="btn-other">Placeholder</button>
                     </div>
                 </div>
-                <div class="row">
-                    <p>Spirit</p>
-                    <button>Placeholder</button>
-                </div>
-                <div class="row">
-                    <p>Liquor</p>
-                    <button>Placeholder</button>
-                </div>
-                <div class="row">
-                    <p>Syrup</p>
-                    <button>Placeholder</button>
-                </div>
-                <div class="row">
-                    <p>Soft Drink</p>
-                    <button>Placeholder</button>
-                </div>
-                <div class="row">
-                    <p>Fruit</p>
-                    <button>Placeholder</button>
-                </div>
-                <div class="row">
-                    <p>Other</p>
-                    <button>Placeholder</button>
-                </div>
-                <div class="row">
-                    <p>Taste</p>
-                    <button>Placeholder</button>
-                </div>
-            </div>
 
-            <div id="right">
-                <div id="search-field">
-                    <p>Name</p>
-                    <input type="text" name="SearchName" placeholder="Search..." />
-                </div>
-                <div id="details">
-                    <div id="spirit" hidden></div>
-                    <div id="liquor" hidden></div>
-                    <div id="syrup" hidden></div>
-                    <div id="soft-drink" hidden></div>
-                    <div id="fruit" hidden></div>
-                    <div id="other" hidden></div>
-                    <div id="taste" hidden></div>
-                </div>
-                <input type="submit" id="submit-btn" value="Search" />
-            </div>
-        </form>
-    </div>
+                <div id="right">
+                    <div id="search-field">
+                        <p>Name</p>
+                        <input type="text" name="Name" placeholder="Search" />
+                    </div>
+                    <div id="details">
+                        <div id="spirits" class="ingredients">
+                            <div class="wrapper">
+                                @for (var i = 0; i < Model.Spirits.Count; i++)
+                                {
+                                    <input type="checkbox" style="display: none" name="@Model.Spirits[i].Selected" id="spirit-@i" class="ingredient-checkboxes" />
+                                    <label onclick="Selected()" for="spirit-@i">
+                                        @Model.Spirits[i].Item
 
+                                    </label>
+                                }
+                            </div>
+                        </div>
+                        <div id="liquors" class="ingredients" hidden>
+                            @foreach (var item in Model.Liquors)
+                            {
+                                <p>@item.Item</p>
+                            }
+                        </div>
+                        <div id="syrups" class="ingredients" hidden>
+                            @foreach (var item in Model.Syrups)
+                            {
+                                <p>@item.Item</p>
+                            }
+                        </div>
+                        <div id="softdrinks" class="ingredients" hidden>
+                            @foreach (var item in Model.SoftDrinks)
+                            {
+                                <p>@item.Item</p>
+                            }
+                        </div>
+                        <div id="fruits" class="ingredients" hidden>
+                            @foreach (var item in Model.Fruits)
+                            {
+                                <p>@item.Item</p>
+                            }
+                        </div>
+                        <div id="others" class="ingredients" hidden>
+                            @foreach (var item in Model.Others)
+                            {
+                                <p>@item.Item</p>
+                            }
+                        </div>
+                    </div>
+                    <input type="submit" id="submit-btn" value="Search" />
+                </div>
+            </form>
+        </div>
+    }
 </section>
+
+<script>
+    document.getElementById("btn-spirit").addEventListener("click", function (e) {
+        console.log("spirit");
+        e.preventDefault();
+        toggle("spirits");
+    });
+    document.getElementById("btn-liquor").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("liquors");
+    });
+    document.getElementById("btn-syrup").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("syrups");
+    });
+    document.getElementById("btn-softdrink").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("softdrinks");
+    });
+    document.getElementById("btn-fruit").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("fruits");
+    });
+    document.getElementById("btn-other").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("others");
+    });
+
+    function toggle(id) {
+        $(".ingredients").hide();
+        $('#' + id).show();
+    }
+
+
+
+
+</script>
 

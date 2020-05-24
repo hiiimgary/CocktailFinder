@@ -7,6 +7,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+
     <link rel="icon" href="~/Images/icon.png">
     <title>Cocktail Finder</title>
 </head>
@@ -32,7 +37,7 @@
                         document.getElementById('log-out-btn').onclick(function () {
                             document.getElementById('logout-form').submit();
                         });
-                        
+
                     </script>
                 }
 
@@ -51,8 +56,8 @@
             <button id="top-rated-btn" onclick="location.href='@Url.Action("TopRated", "Home")'">Top Rated</button>
             @if (Request.IsAuthenticated)
             {
-                <button id="for-you-btn" onclick="location.href='@Url.Action("Home", "Home")'">For You</button>
-                <button id="favorites-btn" onclick="location.href='@Url.Action("Search", "Home")'">Favorites</button>
+                <button id="for-you-btn" onclick="location.href='@Url.Action("ForYou", "Authenticated")'">For You</button>
+                <button id="favorites-btn" onclick="location.href='@Url.Action("Favorites", "Authenticated")'">Favorites</button>
                 <button id="creator-btn" onclick="location.href='@Url.Action("Creator", "Authenticated")'">Creator</button>
             }
         </nav>
@@ -62,6 +67,7 @@
     </section>
 
     <img id="bg-image" src="~/Images/bg.jpg" />
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
+
+
 </body>
 </html>

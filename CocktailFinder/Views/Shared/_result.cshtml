@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CocktailFinder.Models.ViewModel.Cocktail>
+
+
+
+
+<section class="result-page">
+    @foreach (var cocktail in Model)
+    {
+        <div class="cocktail-wrapper" onclick="ShowDetails(@cocktail.Id)">
+
+            @{
+                var base64 = Convert.ToBase64String(cocktail.img);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+            }
+
+            <img src='@imgsrc' class="cocktail-picture" />
+            <div class="title-wrapper">
+                <div><h2>@cocktail.Name</h2></div>
+                <div class="rating"><p>@cocktail.VoteAverage / 5</p></div>
+            </div>
+            <div class="description"><p>@cocktail.Description</p></div>
+        </div>
+    }
+    <div class="cocktail-wrapper-rowfiller"></div>
+    <div class="cocktail-wrapper-rowfiller"></div>
+    <div class="cocktail-wrapper-rowfiller"></div>
+    <div class="cocktail-wrapper-rowfiller"></div>
+    <div class="cocktail-wrapper-rowfiller"></div>
+    <div class="cocktail-wrapper-rowfiller"></div>
+    <div class="cocktail-wrapper-rowfiller"></div>
+    <div class="cocktail-wrapper-rowfiller"></div>
+    <div class="filler"></div>
+
+    <div class="modal fade" id="cocktail-details" role="dialog">
+        <div class="modal-dialog cocktail-popup modal-xl" style="width:1000px">
+            <div class="modal-content">
+                <div class="modal-body" id="cocktail-details-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+    var ShowDetails = function (Id) {
+        $.ajax({
+            type: "POST",
+            url: "/Home/ShowDetails",
+            data: { cocktailId: Id },
+            success: function (response) {
+                $("#cocktail-details-body").html(response);
+                $("#cocktail-details").modal("show");
+            }
+
+        });
+    }
+</script>

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<CocktailFinder.Models.ViewModel.Cocktail>
+
+@{
+    ViewBag.Title = "Favorites";
+    Layout = "~/Views/Shared/_site.cshtml";
+}
+
+<section id="favorites">
+    @Html.Partial("_result", Model);
+</section>
+

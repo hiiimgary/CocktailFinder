@@ -1,6 +1,7 @@
 ﻿using CocktailFinder.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -24,6 +25,15 @@ namespace CocktailFinder.Controllers.DAL
 
         public void CreateCocktail(Models.ViewModel.Creator model)
         {
+            string[] link = model.Video.Split(new string[] { "watch?v=" }, StringSplitOptions.None);
+            string embedLink;
+            if(link.Length == 2)
+            {
+                embedLink = link[0] + "embed/" + link[1];
+            } else
+            {
+                embedLink = model.Video;
+            }
             Cocktail c = new Cocktail
             {
                 Name = model.Name,
@@ -32,11 +42,19 @@ namespace CocktailFinder.Controllers.DAL
                 Occasion = model.Occasion,
                 Recipe = model.Recipe,
                 Description = model.Description,
-                Embed = model.Video,
-                Verified = false
+                Embed = embedLink,
+                Verified = false,
+                vote_average = 0,
+                Total_Votes = 0,
+                Number_of_Votes = 0
             };
-            c.img = new byte[model.image.ContentLength];
-            model.image.InputStream.Read(c.img, 0, model.image.ContentLength);
+            //c.img = new byte[model.image.ContentLength];
+            //model.image.InputStream.Read(c.img, 0, model.image.ContentLength);
+
+            MemoryStream target = new MemoryStream();
+            model.image.InputStream.Position = 0;
+            model.image.InputStream.CopyTo(target);
+            c.img = target.ToArray();
 
             db.Cocktails.Add(c);
             db.SaveChanges();

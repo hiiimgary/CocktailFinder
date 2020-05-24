@@ -13,11 +13,16 @@ namespace CocktailFinder.Controllers
         
         private readonly IngredientsRepository iRepo;
         private readonly CreatorRepository cRepo;
+        private readonly CocktailsRepository cocktailRepo;
+        private readonly UserRepository uRepo;
+
 
         public AuthenticatedController()
         {
             iRepo = new IngredientsRepository();
             cRepo = new CreatorRepository();
+            uRepo = new UserRepository();
+            cocktailRepo = new CocktailsRepository();
         }
 
         public ActionResult Creator()
@@ -30,12 +35,24 @@ namespace CocktailFinder.Controllers
         public ActionResult Creator(Models.ViewModel.Creator model)
         {
             var creatorModel = cRepo.GetIngredients();
-            
-            
+
             if (!ModelState.IsValid)
-            {                
+            {
+                ViewBag.message = "The Given data doesn't meet the requirements!";
                 return View(creatorModel);
-            }            
+            }
+
+            var ingredients = new List<Models.Extended.Ingredient>();
+            foreach (var item in model.Ingredients)
+            {
+                if (item.Amount > 0)
+                {
+                    ingredients.Add(item);
+                }
+            }
+            model.Ingredients = ingredients;
+
+
             cRepo.CreateCocktail(model);
             ViewBag.message = "Cocktail created successfully! We are processing your entry!";
             return View(creatorModel);
@@ -106,6 +123,34 @@ namespace CocktailFinder.Controllers
             var creatorModel = cRepo.GetIngredients();
             return View("Creator", creatorModel);
             
+        }
+
+        public bool Like(bool like, int cocktailId)
+        {
+            var username = User.Identity.Name;
+            uRepo.Like(like, username, cocktailId);
+            return like;
+
+        }
+
+        public int getUserVote(int cocktailId)
+        {
+            var username = User.Identity.Name;
+            return uRepo.UserVote(username, cocktailId);
+        }
+
+        public int setUserVote(int cocktailId, int newRate)
+        {
+            var username = User.Identity.Name;
+            int newvote = uRepo.setUserVote(username, cocktailId, newRate);
+            return newvote;
+        }
+
+        public ActionResult Favorites()
+        {
+            var username = User.Identity.Name;
+            var cocktails = cocktailRepo.GetFavorites(username);
+            return View(cocktails);
         }
     }
 }

@@ -39,6 +39,9 @@
     <NavigationProperty Name="connect_ingredient_cocktail" Relationship="DrinkDBModel.FK_connect_ingredient_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_ingredient_cocktail" />
     <NavigationProperty Name="connect_user_cocktail" Relationship="DrinkDBModel.FK_connect_user_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_user_cocktail" />
     <Property Name="Verified" Type="Boolean" Nullable="false" />
+    <Property Name="Total_Votes" Type="Int32" />
+    <Property Name="Number_of_Votes" Type="Int32" />
+    <Property Name="vote_average" Type="Double" />
   </EntityType>
   <EntityType Name="connect_ingredient_cocktail">
     <Key>

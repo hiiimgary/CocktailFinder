@@ -50,6 +50,7 @@ namespace CocktailFinder.Controllers.DAL
                 query.Property = i.Property;
                 query.Type = i.Type;
                 query.Alcohol = i.Alcohol;
+                query.Units = i.Units;
                 db.SaveChanges();
                 return true;
             }

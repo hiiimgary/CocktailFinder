@@ -4,6 +4,9 @@
     <EntitySetMapping Name="Cocktails">
       <EntityTypeMapping TypeName="DrinkDBModel.Cocktail">
         <MappingFragment StoreEntitySet="Cocktail">
+          <ScalarProperty Name="vote_average" ColumnName="vote_average" />
+          <ScalarProperty Name="Number_of_Votes" ColumnName="Number_of_Votes" />
+          <ScalarProperty Name="Total_Votes" ColumnName="Total_Votes" />
           <ScalarProperty Name="Verified" ColumnName="Verified" />
           <ScalarProperty Name="Embed" ColumnName="Embed" />
           <ScalarProperty Name="img" ColumnName="img" />

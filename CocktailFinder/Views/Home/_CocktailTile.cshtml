@@ -4,13 +4,13 @@
 
     @{ 
         var base64 = Convert.ToBase64String(Model.img);
-        var imgscr = string.Format("data:image/gif;base64,{0}", base64);
+        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
     }
 
-    <img src="~/Images/assets/mojito.jpeg" class="cocktail-picture"/>
+    <img src='@imgsrc' class="cocktail-picture"/>
     <div class="title-wrapper">
         <div><h2>@Model.Name</h2></div>
         <div class="rating"><img src="~/Images/assets/Star_rating_4.5_of_5.png" /></div>
     </div>
-    <div><p>@Model.Description</p></div>
+    <div class="description"><p>@Model.Description</p></div>
 </div>
