@@ -1,5 +1,6 @@
 ﻿using CocktailFinder.Controllers.DAL;
 using CocktailFinder.Models;
+using CocktailFinder.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,14 +36,16 @@ namespace CocktailFinder.Controllers
             return View(model);
         }
 
-        public ActionResult SearchCocktails()
+        public ActionResult SearchCocktails(SearchModel model)
         {
+            var result = sRepository.getCocktails(model);
 
+            return View(result);
         }
 
         public ActionResult TopRated()
         {
-            var cocktails = cocktailsRepository.List();
+            var cocktails = cocktailsRepository.GetTopRated();
             return View(cocktails);
         }
 

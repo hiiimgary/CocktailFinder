@@ -131,10 +131,22 @@ section {
     }
 }
 
-#top-rated, #favorites{
+#top-rated, #favorites, #search-result, #for-you{
     //margin-top: 30px;
     width: 100%;
     height: 100%;
+}
+#search-result, #for-you{
+    .no-result{
+        
+        width: 100%;
+        height: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        color: $text;
+        
+    }
 }
 .result-page {
     width: 100%;

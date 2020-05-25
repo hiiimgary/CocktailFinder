@@ -378,6 +378,8 @@
     <Content Include="Styles\_modal.scss" />
     <Content Include="Styles\_details.scss" />
     <Content Include="Views\Authenticated\Favorites.cshtml" />
+    <Content Include="Views\Home\SearchCocktails.cshtml" />
+    <Content Include="Views\Authenticated\ForYou.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

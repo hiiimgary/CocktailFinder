@@ -100,6 +100,46 @@ namespace CocktailFinder.Controllers.DAL
             return cocktails;
         }
 
+        public List<Models.ViewModel.Cocktail> GetForYou(string username)
+        {
+            List<string> taste = new List<string>();
+            var userConnect = db.Users.Find(username).connect_user_cocktail.Where(x => x.IsLiked).ToList();
+            List<Models.Cocktail> favorites = new List<Cocktail>();
+            foreach(var cocktail in userConnect)
+            {
+                favorites.Add(cocktail.Cocktail);
+                var tastestr = cocktail.Cocktail.Taste.Split(' ').ToList();
+                if (taste.Count == 0)
+                {
+                    taste = tastestr;
+                } else
+                {
+                    taste.AddRange(tastestr);
+                } 
+            }
+            
+            var cocktails = db.Cocktails.Where(y => y.Verified).Where(x => taste.Any(t => x.Taste.Contains(t))).ToList();
+            var list = favorites.ToList();
+            var res = cocktails.Except(list);
+            
+
+            var final = res.Select(ToModel).ToList();
+            if(final.Count == 0)
+            {
+                return null;
+            } else
+            {
+                return final;
+            }
+            
+        }
+
+        public List<Models.ViewModel.Cocktail> GetTopRated()
+        {
+            var res = db.Cocktails.Where(y => y.Verified).OrderByDescending(x => x.vote_average).Take(30).Select(ToModel).ToList();
+            return res;
+        }
+
         private static Models.ViewModel.Cocktail ToModel(Cocktail v)
         {
             return new Models.ViewModel.Cocktail(v.Id, v.Name, v.Type, v.Taste, v.Occasion, v.Recipe, v.Description, v.img, v.Embed, v.Verified, v.vote_average == null ? 0 : (double)v.vote_average);

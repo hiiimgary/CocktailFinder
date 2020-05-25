@@ -113,11 +113,12 @@
             data: { cocktailId: cocktailid, newRate: selectedRate },
             success: function (vote) {
                 console.log("Success!" + vote);
-                for (var i = 1; i <= vote; i++) {
-                    $("#rate" + i).html("star");
-                }
-                for (var i = vote + 1; i <= 5; i++) {
-                    $("#rate" + i).html("star_border");
+                for (var i = 1; i <= 5; i++) {
+                    if (i <= vote) {
+                        $("#rate" + i).html("star");
+                    } else {
+                        $("#rate" + i).html("star_border");
+                    }
                 }
             }
 

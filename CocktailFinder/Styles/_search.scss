@@ -25,6 +25,7 @@
                     opacity: 0;
                     position: fixed;
                     width: 0;
+                    border-radius: 5px;
 
                     &:checked + label {
                         background-color: $activeBtn;
@@ -62,7 +63,7 @@
             button {
                 background-color: $text;
                 border: 0px;
-                width: 240px;
+                width: 200px;
                 height: 45px;
                 color: $tileText;
                 font-size: $title;
@@ -100,7 +101,14 @@
                 justify-content: space-between;
                 align-items: center;
 
+                input[type=text]{
+                    border-radius: 5px;
+                    background-color: $searchField;
+                    opacity: 0.8;
+                    color: $text;
+                    font-size: $title;
 
+                }
                 p {
                     font-size: $title;
                     color: $text;
@@ -123,8 +131,16 @@
                         flex-direction: column;
                         align-items: center;
 
-                        .ingredient-checkboxes:checked+label{
-                            color: $activeBtn;
+                        .item {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+                            input[type=checkbox] {
+                                width: 20px;
+                                
+                            }
                         }
                     }
                 }

@@ -152,5 +152,12 @@ namespace CocktailFinder.Controllers
             var cocktails = cocktailRepo.GetFavorites(username);
             return View(cocktails);
         }
+
+        public ActionResult ForYou()
+        {
+            var username = User.Identity.Name;
+            var res = cocktailRepo.GetForYou(username);
+            return View(res);
+        }
     }
 }
