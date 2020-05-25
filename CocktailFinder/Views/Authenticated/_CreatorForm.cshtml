@@ -1,0 +1,148 @@
+﻿@using System.Collections
+@using CocktailFinder.Models.Extended
+@model CocktailFinder.Models.ViewModel.Creator
+
+@using (Html.BeginForm("Creator", "Authenticated", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="creator-form">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div id="selected-ingredients">
+        @if (Session["usedIds"] != null)
+        {
+            var list = (List<int>)Session["usedIds"];
+
+            for (var i = 0; i < Model.Ingredients.Count(); i++)
+            {
+                @Html.HiddenFor(model => Model.Ingredients[i].Id)
+                @Html.HiddenFor(model => Model.Ingredients[i].Name)
+                @Html.HiddenFor(model => Model.Ingredients[i].Type)
+                @Html.HiddenFor(model => Model.Ingredients[i].Property)
+                foreach (var id in list)
+                {
+                    if (Model.Ingredients[i].Id == id)
+                    {
+
+                        <div class="ingredient-editor">
+                            <div class="name">
+                                <a href="@Url.Action("RemoveIngredientFromSession", "Authenticated", new { id = Model.Ingredients[i].Id })">
+                                    <span class="material-icons">delete</span>
+                                </a>
+                                <h4>@Model.Ingredients[i].Name</h4>
+                            </div>
+                            
+
+
+
+                            <div class="ingredient-field">
+                                <div>
+                                    <label>Amount</label>
+                                    <input type="number" name="@Html.NameFor(model => Model.Ingredients[i].Amount)" />
+                                </div>
+                                <div>
+                                    <label>Unit</label>
+                                    <select name="@Html.NameFor(model => Model.Ingredients[i].UsedUnit)">
+                                        @foreach (var unit in Model.Ingredients[i].Units)
+                                        {
+                                            <option value="@unit">@unit</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        break;
+                    }
+                }
+
+
+
+
+
+
+            }
+        }
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label c" })
+        <div class="col-md-10">
+            
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+          
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.isLong, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div id="radio">
+            <input type="radio" id="radio-shot" name="isLong" value="true" checked>
+            <label for="radio-shot">Long</label>
+
+            <input type="radio" id="radio-long" name="isLong" value="false">
+            <label for="radio-long">Shot</label>
+        </div>
+        @Html.ValidationMessageFor(model => model.isLong, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Occasion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Occasion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Occasion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Taste, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Taste, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Taste, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Recipe, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Recipe, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Recipe, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Image</label>
+        <input type="file" id="image" name="image" />
+
+        @Html.ValidationMessageFor(x => x.image)
+    </div>
+
+    <div class="form-group">
+        <label></label>
+        <div class="col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

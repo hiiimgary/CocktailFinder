@@ -1,0 +1,152 @@
+﻿@model CocktailFinder.Models.ViewModel.CocktailDetails
+
+<div class="details-popup-window">
+    <div class="video-wrapper">
+        <iframe width="560" height="315" src="@string.Format(Model.Cocktail.Embed)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        <div class="main-data">
+            <div class="title">
+                <h2>@Model.Cocktail.Name</h2>
+                @if (Request.IsAuthenticated)
+                {
+                    <div id="like-wrapper">
+                        @if (Model.Liked)
+                        {
+                            <svg onclick="Like(false, @Model.Cocktail.Id)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                        } else
+                        {
+                            <svg onclick="Like(true, @Model.Cocktail.Id)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                                <path d="M0 0h24v24H0z" fill="none" />
+                                <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" />
+                            </svg>
+                        }
+                    </div>
+
+                }
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                <div id="rate-wrapper" onmouseout="RateSelected()">
+                    <span class="material-icons" id="rate1" onmouseout="RateOut(1)" onmouseover="RateOver(1)" onclick="RateClick(1)">star_border</span>
+                    <span class="material-icons" id="rate2" onmouseout="RateOut(2)" onmouseover="RateOver(2)" onclick="RateClick(2)">star_border</span>
+                    <span class="material-icons" id="rate3" onmouseout="RateOut(3)" onmouseover="RateOver(3)" onclick="RateClick(3)">star_border</span>
+                    <span class="material-icons" id="rate4" onmouseout="RateOut(4)" onmouseover="RateOver(4)" onclick="RateClick(4)">star_border</span>
+                    <span class="material-icons" id="rate5" onmouseout="RateOut(5)" onmouseover="RateOver(5)" onclick="RateClick(5)">star_border</span>
+                </div>
+            }
+            <h4>Ingredients</h4>
+            @foreach (var item in Model.Ingredients)
+            {
+                <div class="single-ingredient">
+                    <p>@item.Name : @item.Amount @item.UsedUnit</p>
+                </div>
+            }
+            <div class="type">
+                <h4>Type: @Model.Cocktail.Type</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="property">
+        <h4>Description</h4>
+        <p>@Model.Cocktail.Description</p>
+    </div>
+    <div class="property">
+        <h4>Recipe</h4>
+        <p>@Model.Cocktail.Recipe</p>
+    </div>
+    <div class="property">
+        <h4>Occasion</h4>
+        <p>@Model.Cocktail.Occasion</p>
+    </div>
+    <div class="property">
+        <h4>Taste</h4>
+        <p>@Model.Cocktail.Taste</p>
+    </div>
+
+
+</div>
+
+<script>
+    var cocktailid;
+    var selectedRate;
+
+    $(document).ready(function (e) {
+        cocktailid = @Html.Raw(Json.Encode(Model.Cocktail.Id));
+        console.log("ready");
+        $.ajax({
+            type: "GET",
+            url: "/Authenticated/getUserVote",
+            data: { cocktailId: cocktailid },
+            success: function (vote) {
+                for (var i = 1; i <= vote; i++) {
+                    $("#rate" + i).html("star");
+                }
+                for (var i = vote + 1; i <= 5; i++) {
+                    $("#rate" + i).html("star_border");
+                }
+            }
+
+        });
+    });
+
+    var RateOut = function (rating) {
+        for (var i = 1; i <= rating; i++) {
+            $("#rate" + i).html("star_border");
+        }
+    }
+
+    var RateOver = function (rating) {
+        for (var i = 1; i <= rating; i++) {
+            $("#rate" + i).html("star");
+        }
+    }
+
+    var RateClick = function (rating) {
+        selectedRate = rating;
+        $.ajax({
+            type: "GET",
+            url: "/Authenticated/setUserVote",
+            data: { cocktailId: cocktailid, newRate: selectedRate },
+            success: function (vote) {
+                console.log("Success!" + vote);
+                for (var i = 1; i <= 5; i++) {
+                    if (i <= vote) {
+                        $("#rate" + i).html("star");
+                    } else {
+                        $("#rate" + i).html("star_border");
+                    }
+                }
+            }
+
+        });
+    }
+
+    var RateSelected = function () {
+        for (var i = 1; i <= selectedRate; i++) {
+            $("#rate" + i).html("star");
+        }
+    }
+
+
+    var Like = function (like, id) {
+        cocktailid = id;
+        $.ajax({
+            type: "GET",
+            url: "/Authenticated/Like",
+            data: { like: like, cocktailId: id },
+            success: function (response) {
+                if (like) {
+                    $("#like-wrapper").html('<svg onclick="Like(false, cocktailid)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none" /><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" /></svg>');
+                } else {
+                    $("#like-wrapper").html('<svg onclick="Like(true, cocktailid)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none" /><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" /></svg>');
+                }
+            }
+
+        });
+    }
+</script>
+

@@ -26,7 +26,7 @@ namespace CocktailFinder.Controllers.DAL
                 return false;
             }
 
-            db.Ingredients.Add(new Models.Ingredient { Name = i.Name, Type = i.Type, Property = i.Property, Alcohol = i.Alcohol});
+            db.Ingredients.Add(new Models.Ingredient { Name = i.Name, Type = i.Type, Property = i.Property, Alcohol = i.Alcohol, Units = i.Units});
             db.SaveChanges();
             return true;
         }
@@ -50,6 +50,7 @@ namespace CocktailFinder.Controllers.DAL
                 query.Property = i.Property;
                 query.Type = i.Type;
                 query.Alcohol = i.Alcohol;
+                query.Units = i.Units;
                 db.SaveChanges();
                 return true;
             }
@@ -64,7 +65,7 @@ namespace CocktailFinder.Controllers.DAL
 
         private static Models.ViewModel.Ingredient ToModel(Ingredient i)
         {
-            return new Models.ViewModel.Ingredient(i.Id, i.Name, i.Type, i.Property, (double) i.Alcohol);
+            return new Models.ViewModel.Ingredient(i.Id, i.Name, i.Type, i.Property, (double) i.Alcohol, i.Units);
         }
     }
 }

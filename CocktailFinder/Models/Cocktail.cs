@@ -29,6 +29,11 @@ namespace CocktailFinder.Models
         public string Recipe { get; set; }
         public string Description { get; set; }
         public byte[] img { get; set; }
+        public string Embed { get; set; }
+        public bool Verified { get; set; }
+        public Nullable<int> Total_Votes { get; set; }
+        public Nullable<int> Number_of_Votes { get; set; }
+        public Nullable<double> vote_average { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<connect_ingredient_cocktail> connect_ingredient_cocktail { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DrinkDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DrinkDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cocktail">
           <Key>
             <PropertyRef Name="Id" />
@@ -16,7 +16,12 @@
           <Property Name="Occasion" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Recipe" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="img" Type="image" />
+          <Property Name="img" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Embed" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Verified" Type="bit" Nullable="false" />
+          <Property Name="Total_Votes" Type="int" />
+          <Property Name="Number_of_Votes" Type="int" />
+          <Property Name="vote_average" Type="float" />
         </EntityType>
         <EntityType Name="connect_ingredient_cocktail">
           <Key>
@@ -48,6 +53,7 @@
           <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Property" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Alcohol" Type="float" />
+          <Property Name="Units" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -131,25 +137,52 @@
             <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DrinkDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DrinkDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cocktails" EntityType="DrinkDBModel.Cocktail" />
+          <EntitySet Name="connect_ingredient_cocktail" EntityType="DrinkDBModel.connect_ingredient_cocktail" />
+          <EntitySet Name="connect_user_cocktail" EntityType="DrinkDBModel.connect_user_cocktail" />
+          <EntitySet Name="Ingredients" EntityType="DrinkDBModel.Ingredient" />
+          <EntitySet Name="Users" EntityType="DrinkDBModel.User" />
+          <AssociationSet Name="FK_connect_ingredient_cocktail_CocktailID" Association="DrinkDBModel.FK_connect_ingredient_cocktail_CocktailID">
+            <End Role="Cocktail" EntitySet="Cocktails" />
+            <End Role="connect_ingredient_cocktail" EntitySet="connect_ingredient_cocktail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_connect_user_cocktail_CocktailID" Association="DrinkDBModel.FK_connect_user_cocktail_CocktailID">
+            <End Role="Cocktail" EntitySet="Cocktails" />
+            <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_connect_ingredient_cocktail_IngredientID" Association="DrinkDBModel.FK_connect_ingredient_cocktail_IngredientID">
+            <End Role="Ingredient" EntitySet="Ingredients" />
+            <End Role="connect_ingredient_cocktail" EntitySet="connect_ingredient_cocktail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_connect_user_cocktail_UserID" Association="DrinkDBModel.FK_connect_user_cocktail_UserID">
+            <End Role="User" EntitySet="Users" />
+            <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Cocktail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Taste" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Occasion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Recipe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="connect_ingredient_cocktail" Relationship="Self.FK_connect_ingredient_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_ingredient_cocktail" />
-          <NavigationProperty Name="connect_user_cocktail" Relationship="Self.FK_connect_user_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_user_cocktail" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Taste" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Occasion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Recipe" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Embed" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="connect_ingredient_cocktail" Relationship="DrinkDBModel.FK_connect_ingredient_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_ingredient_cocktail" />
+          <NavigationProperty Name="connect_user_cocktail" Relationship="DrinkDBModel.FK_connect_user_cocktail_CocktailID" FromRole="Cocktail" ToRole="connect_user_cocktail" />
+          <Property Name="Verified" Type="Boolean" Nullable="false" />
+          <Property Name="Total_Votes" Type="Int32" />
+          <Property Name="Number_of_Votes" Type="Int32" />
+          <Property Name="vote_average" Type="Double" />
         </EntityType>
         <EntityType Name="connect_ingredient_cocktail">
           <Key>
@@ -159,49 +192,50 @@
           <Property Name="CocktailID" Type="Int32" Nullable="false" />
           <Property Name="IngredientID" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Double" Nullable="false" />
-          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Cocktail" Relationship="Self.FK_connect_ingredient_cocktail_CocktailID" FromRole="connect_ingredient_cocktail" ToRole="Cocktail" />
-          <NavigationProperty Name="Ingredient" Relationship="Self.FK_connect_ingredient_cocktail_IngredientID" FromRole="connect_ingredient_cocktail" ToRole="Ingredient" />
+          <Property Name="Unit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cocktail" Relationship="DrinkDBModel.FK_connect_ingredient_cocktail_CocktailID" FromRole="connect_ingredient_cocktail" ToRole="Cocktail" />
+          <NavigationProperty Name="Ingredient" Relationship="DrinkDBModel.FK_connect_ingredient_cocktail_IngredientID" FromRole="connect_ingredient_cocktail" ToRole="Ingredient" />
         </EntityType>
         <EntityType Name="connect_user_cocktail">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CocktailID" Type="Int32" Nullable="false" />
           <Property Name="IsLiked" Type="Boolean" Nullable="false" />
           <Property Name="Rate" Type="Int32" Nullable="false" />
           <Property Name="IsCreator" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Cocktail" Relationship="Self.FK_connect_user_cocktail_CocktailID" FromRole="connect_user_cocktail" ToRole="Cocktail" />
-          <NavigationProperty Name="User" Relationship="Self.FK_connect_user_cocktail_UserID" FromRole="connect_user_cocktail" ToRole="User" />
+          <NavigationProperty Name="Cocktail" Relationship="DrinkDBModel.FK_connect_user_cocktail_CocktailID" FromRole="connect_user_cocktail" ToRole="Cocktail" />
+          <NavigationProperty Name="User" Relationship="DrinkDBModel.FK_connect_user_cocktail_UserID" FromRole="connect_user_cocktail" ToRole="User" />
         </EntityType>
         <EntityType Name="Ingredient">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Property" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Property" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Alcohol" Type="Double" />
-          <NavigationProperty Name="connect_ingredient_cocktail" Relationship="Self.FK_connect_ingredient_cocktail_IngredientID" FromRole="Ingredient" ToRole="connect_ingredient_cocktail" />
+          <NavigationProperty Name="connect_ingredient_cocktail" Relationship="DrinkDBModel.FK_connect_ingredient_cocktail_IngredientID" FromRole="Ingredient" ToRole="connect_ingredient_cocktail" />
+          <Property Name="Units" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Username" />
           </Key>
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="isVerified" Type="Boolean" Nullable="false" />
           <Property Name="ActivationCode" Type="Guid" Nullable="false" />
-          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="connect_user_cocktail" Relationship="Self.FK_connect_user_cocktail_UserID" FromRole="User" ToRole="connect_user_cocktail" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="connect_user_cocktail" Relationship="DrinkDBModel.FK_connect_user_cocktail_UserID" FromRole="User" ToRole="connect_user_cocktail" />
         </EntityType>
         <Association Name="FK_connect_ingredient_cocktail_CocktailID">
-          <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
-          <End Role="connect_ingredient_cocktail" Type="Self.connect_ingredient_cocktail" Multiplicity="*" />
+          <End Type="DrinkDBModel.Cocktail" Role="Cocktail" Multiplicity="1" />
+          <End Type="DrinkDBModel.connect_ingredient_cocktail" Role="connect_ingredient_cocktail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cocktail">
               <PropertyRef Name="Id" />
@@ -212,8 +246,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_connect_user_cocktail_CocktailID">
-          <End Role="Cocktail" Type="Self.Cocktail" Multiplicity="1" />
-          <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+          <End Type="DrinkDBModel.Cocktail" Role="Cocktail" Multiplicity="1" />
+          <End Type="DrinkDBModel.connect_user_cocktail" Role="connect_user_cocktail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cocktail">
               <PropertyRef Name="Id" />
@@ -224,8 +258,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_connect_ingredient_cocktail_IngredientID">
-          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
-          <End Role="connect_ingredient_cocktail" Type="Self.connect_ingredient_cocktail" Multiplicity="*" />
+          <End Type="DrinkDBModel.Ingredient" Role="Ingredient" Multiplicity="1" />
+          <End Type="DrinkDBModel.connect_ingredient_cocktail" Role="connect_ingredient_cocktail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ingredient">
               <PropertyRef Name="Id" />
@@ -236,8 +270,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_connect_user_cocktail_UserID">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="connect_user_cocktail" Type="Self.connect_user_cocktail" Multiplicity="*" />
+          <End Type="DrinkDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="DrinkDBModel.connect_user_cocktail" Role="connect_user_cocktail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="Username" />
@@ -247,29 +281,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DrinkDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cocktails" EntityType="Self.Cocktail" />
-          <EntitySet Name="connect_ingredient_cocktail" EntityType="Self.connect_ingredient_cocktail" />
-          <EntitySet Name="connect_user_cocktail" EntityType="Self.connect_user_cocktail" />
-          <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_connect_ingredient_cocktail_CocktailID" Association="Self.FK_connect_ingredient_cocktail_CocktailID">
-            <End Role="Cocktail" EntitySet="Cocktails" />
-            <End Role="connect_ingredient_cocktail" EntitySet="connect_ingredient_cocktail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_connect_user_cocktail_CocktailID" Association="Self.FK_connect_user_cocktail_CocktailID">
-            <End Role="Cocktail" EntitySet="Cocktails" />
-            <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_connect_ingredient_cocktail_IngredientID" Association="Self.FK_connect_ingredient_cocktail_IngredientID">
-            <End Role="Ingredient" EntitySet="Ingredients" />
-            <End Role="connect_ingredient_cocktail" EntitySet="connect_ingredient_cocktail" />
-          </AssociationSet>
-          <AssociationSet Name="FK_connect_user_cocktail_UserID" Association="Self.FK_connect_user_cocktail_UserID">
-            <End Role="User" EntitySet="Users" />
-            <End Role="connect_user_cocktail" EntitySet="connect_user_cocktail" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -279,60 +290,66 @@
           <EntitySetMapping Name="Cocktails">
             <EntityTypeMapping TypeName="DrinkDBModel.Cocktail">
               <MappingFragment StoreEntitySet="Cocktail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Taste" ColumnName="Taste" />
-                <ScalarProperty Name="Occasion" ColumnName="Occasion" />
-                <ScalarProperty Name="Recipe" ColumnName="Recipe" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="vote_average" ColumnName="vote_average" />
+                <ScalarProperty Name="Number_of_Votes" ColumnName="Number_of_Votes" />
+                <ScalarProperty Name="Total_Votes" ColumnName="Total_Votes" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Embed" ColumnName="Embed" />
                 <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Recipe" ColumnName="Recipe" />
+                <ScalarProperty Name="Occasion" ColumnName="Occasion" />
+                <ScalarProperty Name="Taste" ColumnName="Taste" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="connect_ingredient_cocktail">
             <EntityTypeMapping TypeName="DrinkDBModel.connect_ingredient_cocktail">
               <MappingFragment StoreEntitySet="connect_ingredient_cocktail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
-                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+                <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="connect_user_cocktail">
             <EntityTypeMapping TypeName="DrinkDBModel.connect_user_cocktail">
               <MappingFragment StoreEntitySet="connect_user_cocktail">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
-                <ScalarProperty Name="IsLiked" ColumnName="IsLiked" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="IsCreator" ColumnName="IsCreator" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="IsLiked" ColumnName="IsLiked" />
+                <ScalarProperty Name="CocktailID" ColumnName="CocktailID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ingredients">
             <EntityTypeMapping TypeName="DrinkDBModel.Ingredient">
               <MappingFragment StoreEntitySet="Ingredient">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Property" ColumnName="Property" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
                 <ScalarProperty Name="Alcohol" ColumnName="Alcohol" />
+                <ScalarProperty Name="Property" ColumnName="Property" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DrinkDBModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="isVerified" ColumnName="isVerified" />
-                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+                <ScalarProperty Name="isVerified" ColumnName="isVerified" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

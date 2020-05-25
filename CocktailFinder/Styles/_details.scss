@@ -1,0 +1,56 @@
+﻿@import '_color.scss';
+
+.details-popup-window {
+    color: $text;
+
+    .video-wrapper {
+        display: flex;
+        margin-bottom: 30px;
+
+        iframe {
+            border-radius: 5px;
+        }
+
+        .main-data {
+            margin-left: 30px;
+            //width: 100%;
+            .title {
+                display: flex;
+
+                svg {
+                    height: 30px;
+                    margin-left: 20px;
+                    fill: $activeBtn;
+                    cursor: pointer;
+                }
+
+                h2 {
+                    margin-bottom: 20px;
+                }
+            }
+
+            #rate-wrapper {
+                margin-bottom: 20px;
+
+                span {
+                    margin: 0;
+                    padding: 5px;
+                    height: 35px;
+                    cursor: pointer;
+                }
+            }
+
+            h4 {
+                margin-bottom: 10px;
+            }
+
+            .type {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .property {
+        margin-bottom: 30px;
+    }
+}

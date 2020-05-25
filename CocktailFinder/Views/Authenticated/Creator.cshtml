@@ -1,0 +1,270 @@
+﻿@model CocktailFinder.Models.ViewModel.Creator
+
+@{
+    ViewBag.Title = "Creator";
+    Layout = "~/Views/Shared/_site.cshtml";
+}
+<section class="creator">
+
+    @if (ViewBag.message != "")
+    {
+        <h4 class="viewbag">@ViewBag.message</h4>
+    }
+
+        <div class="ingredient-btns">
+            <button id="btn-spirit">Spirits</button>
+            <button id="btn-liquor">Liquors</button>
+            <button id="btn-syrup">Syrups</button>
+            <button id="btn-softdrink">Soft Drinks</button>
+            <button id="btn-fruit">Fruits</button>
+            <button id="btn-other">Others</button>
+        </div>
+    <div id="ingredients-list">
+
+        <div class="ingredients" id="spirits" hidden>
+            <div class="wrapper">
+                <br />
+                <h4>Spirits</h4>
+
+                @foreach (var item in Model.Ingredients)
+                {
+                    if (item.Type == "spirit")
+                    {
+                        bool used = false;
+                        if (Session["usedIds"] != null)
+                        {
+                            foreach (var id in (List<int>)Session["usedIds"])
+                            {
+                                if (item.Id == id)
+                                {
+                                    used = true;
+                                }
+                            }
+                        }
+
+
+                        if (used)
+                        {
+                            <p class="used-ingredient">@item.Name</p>
+                        } else
+                        {
+                            <a class="not-used-ingredient" href="@Url.Action("AddIngredientToSession", "Authenticated", new { id = item.Id })">@item.Name</a>
+                        }
+
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="ingredients" id="liquors" hidden>
+            <div class="wrapper">
+                <br />
+                <h4>Liquors</h4>
+
+                @foreach (var item in Model.Ingredients)
+                {
+                    if (item.Type == "liquor")
+                    {
+                        bool used = false;
+                        if (Session["usedIds"] != null)
+                        {
+                            foreach (var id in (List<int>)Session["usedIds"])
+                            {
+                                if (item.Id == id)
+                                {
+                                    used = true;
+                                }
+                            }
+                        }
+
+
+                        if (used)
+                        {
+                            <p class="used-ingredient">@item.Name</p>
+                        } else
+                        {
+                            <a class="not-used-ingredient" href="@Url.Action("AddIngredientToSession", "Authenticated", new { id = item.Id })">@item.Name</a>
+                        }
+                    }
+                }
+            </div>
+        </div>
+
+            <div class="ingredients" id="syrups" hidden>
+                <div class="wrapper">
+                    <br />
+                    <h4>Syrups</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "syrup")
+                        {
+                            bool used = false;
+                            if (Session["usedIds"] != null)
+                            {
+                                foreach (var id in (List<int>)Session["usedIds"])
+                                {
+                                    if (item.Id == id)
+                                    {
+                                        used = true;
+                                    }
+                                }
+                            }
+
+
+                            if (used)
+                            {
+                                <p class="used-ingredient">@item.Name</p>
+                            } else
+                            {
+                                <a class="not-used-ingredient" href="@Url.Action("AddIngredientToSession", "Authenticated", new { id = item.Id })">@item.Name</a>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="ingredients" id="softdrinks" hidden>
+                <div class="wrapper">
+                    <br />
+                    <h4>Soft Drinks</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "softdrink")
+                        {
+                            bool used = false;
+                            if (Session["usedIds"] != null)
+                            {
+                                foreach (var id in (List<int>)Session["usedIds"])
+                                {
+                                    if (item.Id == id)
+                                    {
+                                        used = true;
+                                    }
+                                }
+                            }
+
+
+                            if (used)
+                            {
+                                <p class="used-ingredient">@item.Name</p>
+                            } else
+                            {
+                                <a class="not-used-ingredient" href="@Url.Action("AddIngredientToSession", "Authenticated", new { id = item.Id })">@item.Name</a>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="ingredients" id="fruits" hidden>
+                <div class="wrapper">
+                    <br />
+                    <h4>Fruits</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "fruit")
+                        {
+                            bool used = false;
+                            if (Session["usedIds"] != null)
+                            {
+                                foreach (var id in (List<int>)Session["usedIds"])
+                                {
+                                    if (item.Id == id)
+                                    {
+                                        used = true;
+                                    }
+                                }
+                            }
+
+
+                            if (used)
+                            {
+                                <p class="used-ingredient">@item.Name</p>
+                            } else
+                            {
+                                <a class="not-used-ingredient" href="@Url.Action("AddIngredientToSession", "Authenticated", new { id = item.Id })">@item.Name</a>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="ingredients" id="others" hidden>
+                <div class="wrapper">
+                    <br />
+                    <h4>Others</h4>
+
+                    @foreach (var item in Model.Ingredients)
+                    {
+                        if (item.Type == "other")
+                        {
+                            bool used = false;
+                            if (Session["usedIds"] != null)
+                            {
+                                foreach (var id in (List<int>)Session["usedIds"])
+                                {
+                                    if (item.Id == id)
+                                    {
+                                        used = true;
+                                    }
+                                }
+                            }
+
+
+                            if (used)
+                            {
+                                <p class="used-ingredient">@item.Name</p>
+                            } else
+                            {
+                                <a class="not-used-ingredient" href="@Url.Action("AddIngredientToSession", "Authenticated", new { id = item.Id })">@item.Name</a>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+    @{Html.RenderPartial("_CreatorForm", Model);}
+
+
+</section>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script>
+    document.getElementById("btn-spirit").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("spirits");
+    });
+    document.getElementById("btn-liquor").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("liquors");
+    });
+    document.getElementById("btn-syrup").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("syrups");
+    });
+    document.getElementById("btn-softdrink").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("softdrinks");
+    });
+    document.getElementById("btn-fruit").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("fruits");
+    });
+    document.getElementById("btn-other").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("others");
+    });
+
+    function toggle(id) {
+        $(".ingredients").hide();
+        $('#' + id).show();
+    }
+
+   
+
+
+</script>
+

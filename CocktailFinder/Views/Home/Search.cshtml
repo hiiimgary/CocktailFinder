@@ -1,71 +1,182 @@
-﻿
+﻿@model CocktailFinder.Models.ViewModel.SearchModel
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_site.cshtml";
 }
 
 <section id="search">
+
     <div id="wrapper">
-        <form action="" method="post">
+        @using (Html.BeginForm("SearchCocktails", "Home", FormMethod.Get))
+        {
             <div id="left">
                 <div class="row">
                     <p>Type</p>
                     <div id="radio">
-                        <input type="radio" id="radio-shot" name="radioType" value="Shot" checked>
+                        <input type="radio" id="radio-shot" name="isLong" value="false">
                         <label for="radio-shot">Shot</label>
 
-                        <input type="radio" id="radio-long" name="radioType" value="Long">
+                        <input type="radio" id="radio-long" name="isLong" value="true" checked>
                         <label for="radio-long">Long</label>
                     </div>
                 </div>
-                <div class="row">
-                    <p>Spirit</p>
-                    <button>Placeholder</button>
+                <div class="row">                    
+                    <button id="btn-spirit">Spirits</button>
                 </div>
                 <div class="row">
-                    <p>Liquor</p>
-                    <button>Placeholder</button>
+                    <button id="btn-liquor">Liquors</button>
                 </div>
                 <div class="row">
-                    <p>Syrup</p>
-                    <button>Placeholder</button>
+                    <button id="btn-syrup">Syrups</button>
                 </div>
                 <div class="row">
-                    <p>Soft Drink</p>
-                    <button>Placeholder</button>
+                    <button id="btn-softdrink">Soft Drinks</button>
                 </div>
                 <div class="row">
-                    <p>Fruit</p>
-                    <button>Placeholder</button>
+                    <button id="btn-fruit">Fruits</button>
                 </div>
                 <div class="row">
-                    <p>Other</p>
-                    <button>Placeholder</button>
-                </div>
-                <div class="row">
-                    <p>Taste</p>
-                    <button>Placeholder</button>
+                    <button id="btn-other">Others</button>
                 </div>
             </div>
 
             <div id="right">
                 <div id="search-field">
-                    <p>Name</p>
-                    <input type="text" name="SearchName" placeholder="Search..." />
+                    
+                    <input type="text" name="Name" placeholder="Cocktail Name" />
                 </div>
                 <div id="details">
-                    <div id="spirit" hidden></div>
-                    <div id="liquor" hidden></div>
-                    <div id="syrup" hidden></div>
-                    <div id="soft-drink" hidden></div>
-                    <div id="fruit" hidden></div>
-                    <div id="other" hidden></div>
-                    <div id="taste" hidden></div>
+                    <div id="spirits" class="ingredients" hidden>
+                        <div class="wrapper">
+                            @for (var i = 0; i < Model.Spirits.Count; i++)
+                            {
+                            <div class="item">
+                                @Html.HiddenFor(model => model.Spirits[i].Item)
+
+                                @Html.CheckBoxFor(m => m.Spirits[i].Selected, new { htmlAttributes = new { @class = "ingredient-checkboxes" } })
+                                @Html.LabelFor(m => m.Spirits[i].Selected, Model.Spirits[i].Item)
+                                <div></div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div id="liquors" class="ingredients" hidden>
+                        <div class="wrapper">
+                            @for (var i = 0; i < Model.Liquors.Count; i++)
+                            {
+                            <div class="item">
+                                @Html.HiddenFor(model => model.Liquors[i].Item)
+
+                                @Html.CheckBoxFor(m => m.Liquors[i].Selected, new { htmlAttributes = new { @class = "ingredient-checkboxes" } })
+                                @Html.LabelFor(m => m.Liquors[i].Selected, Model.Liquors[i].Item)
+                                <div></div>
+
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div id="syrups" class="ingredients" hidden>
+                        <div class="wrapper">
+                            @for (var i = 0; i < Model.Syrups.Count; i++)
+                            {
+                            <div class="item">
+                                @Html.HiddenFor(model => model.Syrups[i].Item)
+
+                                @Html.CheckBoxFor(m => m.Syrups[i].Selected, new { htmlAttributes = new { @class = "ingredient-checkboxes" } })
+                                @Html.LabelFor(m => m.Syrups[i].Selected, Model.Syrups[i].Item)
+                                <div></div>
+
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div id="softdrinks" class="ingredients" hidden>
+                        <div class="wrapper">
+                            @for (var i = 0; i < Model.SoftDrinks.Count; i++)
+                            {
+                            <div class="item">
+                                @Html.HiddenFor(model => model.SoftDrinks[i].Item)
+
+                                @Html.CheckBoxFor(m => m.SoftDrinks[i].Selected, new { htmlAttributes = new { @class = "ingredient-checkboxes" } })
+                                @Html.LabelFor(m => m.SoftDrinks[i].Selected, Model.SoftDrinks[i].Item)
+                                <div></div>
+
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div id="fruits" class="ingredients" hidden>
+                        <div class="wrapper">
+                            @for (var i = 0; i < Model.Fruits.Count; i++)
+                            {
+                            <div class="item">
+                                @Html.HiddenFor(model => model.Fruits[i].Item)
+
+                                @Html.CheckBoxFor(m => m.Fruits[i].Selected, new { htmlAttributes = new { @class = "ingredient-checkboxes" } })
+                                @Html.LabelFor(m => m.Fruits[i].Selected, Model.Fruits[i].Item)
+                                <div></div>
+
+                            </div>
+                            }
+                        </div>
+                    </div>
+                    <div id="others" class="ingredients" hidden>
+                        <div class="wrapper">
+                            @for (var i = 0; i < Model.Others.Count; i++)
+                            {
+                            <div class="item">
+                                @Html.HiddenFor(model => model.Others[i].Item)
+
+                                @Html.CheckBoxFor(m => m.Others[i].Selected, new { htmlAttributes = new { @class = "ingredient-checkboxes" } })
+                                @Html.LabelFor(m => m.Others[i].Selected, Model.Others[i].Item)
+                                <div></div>
+
+                            </div>
+                            }
+                        </div>
+                    </div>
                 </div>
                 <input type="submit" id="submit-btn" value="Search" />
             </div>
-        </form>
+        }
     </div>
-
+    
 </section>
+
+<script>
+    document.getElementById("btn-spirit").addEventListener("click", function (e) {
+        console.log("spirit");
+        e.preventDefault();
+        toggle("spirits");
+    });
+    document.getElementById("btn-liquor").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("liquors");
+    });
+    document.getElementById("btn-syrup").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("syrups");
+    });
+    document.getElementById("btn-softdrink").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("softdrinks");
+    });
+    document.getElementById("btn-fruit").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("fruits");
+    });
+    document.getElementById("btn-other").addEventListener("click", function (e) {
+        e.preventDefault();
+        toggle("others");
+    });
+
+    function toggle(id) {
+        $(".ingredients").hide();
+        $('#' + id).show();
+    }
+
+
+
+
+</script>
 

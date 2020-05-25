@@ -57,6 +57,34 @@ namespace CocktailFinder.Controllers
             
         }
 
+        public ActionResult Cocktails()
+        {
+            return View(cRepo.List());
+        }
+
+        public ActionResult CocktailDetails(int id)
+        {
+            return View(cRepo.GetCocktail(id));
+        }
+
+        public ActionResult CocktailDelete(int id)
+        {
+            cRepo.Delete(id);
+            return RedirectToAction("Cocktails");
+        }
+
+        public ActionResult CocktailConfirm(int id)
+        {
+            if (cRepo.Confirm(id))
+            {
+                ViewBag.message = "Confirmed";
+            } else
+            {
+                ViewBag.message = "Error";
+            }
+            return RedirectToAction("CocktailDetails", cRepo.GetCocktail(id));
+        }
+
         public ActionResult Ingredients()
         {
             return View(iRepo.List());
@@ -66,6 +94,8 @@ namespace CocktailFinder.Controllers
         {
             return View();
         }
+
+
         [HttpPost]
         public ActionResult CreateIngredient(Models.ViewModel.Ingredient i)
         {

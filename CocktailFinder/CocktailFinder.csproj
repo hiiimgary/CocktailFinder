@@ -143,6 +143,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\assets\mojito.jpeg" />
+    <Content Include="Images\assets\remove.png" />
     <Content Include="Images\assets\Star_rating_4.5_of_5.png" />
     <Content Include="Images\bg.jpg" />
     <Content Include="Images\icon.png" />
@@ -272,8 +273,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AuthenticatedController.cs" />
     <Compile Include="Controllers\DAL\CocktailsRepository.cs" />
+    <Compile Include="Controllers\DAL\CreatorRepository.cs" />
     <Compile Include="Controllers\DAL\IngredientsRepository.cs" />
+    <Compile Include="Controllers\DAL\SearchRepository.cs" />
     <Compile Include="Controllers\DAL\UserRepository.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -304,6 +308,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Extended\Ingredient.cs" />
     <Compile Include="Models\Extended\User.cs" />
     <Compile Include="Models\Ingredient.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
@@ -315,10 +320,15 @@
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Models\UserRoleProvider.cs" />
     <Compile Include="Models\ViewModel\Cocktail.cs" />
+    <Compile Include="Models\ViewModel\CocktailDetails.cs" />
+    <Compile Include="Models\ViewModel\Creator.cs" />
     <Compile Include="Models\ViewModel\Ingredient.cs" />
+    <Compile Include="Models\ViewModel\IngredientMin.cs" />
+    <Compile Include="Models\ViewModel\SearchModel.cs" />
     <Compile Include="Models\ViewModel\User.cs" />
     <Compile Include="PasswordHashing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\ValidateFileAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -358,6 +368,18 @@
     <Content Include="Views\Admin\Ingredients.cshtml" />
     <Content Include="Views\Admin\CreateIngredient.cshtml" />
     <Content Include="Views\Admin\EditIngredient.cshtml" />
+    <Content Include="Views\Authenticated\Creator.cshtml" />
+    <Content Include="Views\Authenticated\_CreatorForm.cshtml" />
+    <Content Include="Styles\_creator.scss" />
+    <Content Include="Views\Admin\Cocktails.cshtml" />
+    <Content Include="Views\Admin\CocktailDetails.cshtml" />
+    <Content Include="Views\Shared\_result.cshtml" />
+    <Content Include="Views\Shared\_details.cshtml" />
+    <Content Include="Styles\_modal.scss" />
+    <Content Include="Styles\_details.scss" />
+    <Content Include="Views\Authenticated\Favorites.cshtml" />
+    <Content Include="Views\Home\SearchCocktails.cshtml" />
+    <Content Include="Views\Authenticated\ForYou.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

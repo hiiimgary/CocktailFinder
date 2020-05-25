@@ -29,6 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Alcohol)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Units)
+        </th>
         <th></th>
     </tr>
 
@@ -47,9 +50,12 @@
             @Html.DisplayFor(modelItem => item.Alcohol)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EditIngredient", new { id=item.Id }) |
-            @Html.ActionLink("Details", "DetailsIngredient", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteIngredient", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Units)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditIngredient", new { id = item.Id }) |
+            @Html.ActionLink("Details", "DetailsIngredient", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "DeleteIngredient", new { id = item.Id })
         </td>
     </tr>
 }

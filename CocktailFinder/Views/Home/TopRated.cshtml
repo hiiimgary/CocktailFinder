@@ -5,10 +5,7 @@
 }
 
 <section id="top-rated">
-    @foreach (var item in Model)
-    {
-        @Html.Partial("_CocktailTile", item);
-    }
+    @Html.Partial("_result", Model);
 </section>
 
 

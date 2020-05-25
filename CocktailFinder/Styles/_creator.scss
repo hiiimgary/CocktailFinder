@@ -1,0 +1,207 @@
+﻿@import './_color';
+
+.creator {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 85%;
+    overflow-y: auto;
+    color: $text;
+
+    .viewbag{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .ingredient-btns {
+        button {
+            background-color: $inactiveBtn;
+            border: 0px;
+            width: 100px;
+            height: 40px;
+            color: $text;
+            font-size: $paragraph;
+            margin-bottom: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $activeBtn;
+            }
+        }
+    }
+
+    #ingredients-list {
+        .ingredients {
+            .wrapper {
+                background-color: $searchField;
+                opacity: 0.8;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 300px;
+                height: 300px;
+                overflow-y: auto;
+                margin-bottom: 30px;
+                h4 {
+                    margin-bottom: 15px;
+                }
+                .used-ingredient{
+                    color: $field;
+                }
+
+                .not-used-ingredient {
+                    color: $text;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.creator-form {
+    //background-color: red;
+    width: 600px;
+    .ingredient-editor {
+        margin-bottom: 10px;
+        margin-left: 110px;
+        background-color: $searchField;
+        opacity: 0.9;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+
+        .name {
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            width: 60%;
+          
+            display: flex;
+            flex-direction: row;
+
+
+
+            span {
+
+                margin-right: 30px;
+                color: $text;
+            }
+        }
+
+        .ingredient-field {
+            width: 35%;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            
+
+            label {
+            }
+
+            input {
+                width: 100px;
+                height: 30px;
+                font-size: $paragraph;
+                border-radius: 5px;
+                
+            }
+
+            select {
+                width: 100px;
+                height: 30px;
+                font-size: $paragraph;
+            }
+        }
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        width: 100%;
+
+        .text-danger, .field-validation-error{
+            color: $activeBtn;
+        }
+
+        label {
+            width: 130px;
+        }
+
+        #radio {
+            input[type="radio"] {
+                opacity: 0;
+                position: fixed;
+                width: 0;
+
+                &:checked + label {
+                    background-color: $activeBtn;
+                    color: $text;
+                }
+
+                &:not(:checked) + label {
+                    background-color: $text;
+                    color: $tileText;
+                }
+
+                &:not(:checked):hover + label {
+                    background-color: $hoverBtn;
+                    color: $text;
+                }
+            }
+
+
+
+            label {
+                display: inline-block;
+                background-color: $text;
+                padding: 5px 10px;
+                text-align: center;
+                border-radius: 5px;
+                color: $tileText;
+                font-size: $paragraph;
+            }
+        }
+
+        .col-md-10 {
+            width: 100%;
+
+            textarea {
+                resize: none;
+                height: 180px;
+            }
+
+            input[type=text] {
+                height: 30px;
+            }
+
+            input[type=text], textarea {
+                width: 100%;
+                border-radius: 5px;
+                border: none;
+                font-size: $paragraph;
+                background-color: $searchField;
+                opacity: 0.9;
+                color: $text;
+                resize: none;
+            }
+
+            input[type=submit] {
+                border: none;
+                border-radius: 5px;
+                width: 100%;
+                height: 40px;
+                background-color: $activeBtn;
+                color: $text;
+                font-size: $paragraph;
+                &:hover{
+                    background-color:$hoverBtn;
+                }
+            }
+        }
+    }
+}

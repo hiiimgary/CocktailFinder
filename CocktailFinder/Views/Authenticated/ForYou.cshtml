@@ -1,0 +1,21 @@
+﻿@model List<CocktailFinder.Models.ViewModel.Cocktail>
+
+@{
+    ViewBag.Title = "ForYou";
+    Layout = "~/Views/Shared/_site.cshtml";
+}
+
+<section id="for-you">
+    @if (Model == null)
+    {
+        <div class="no-result">
+            <h2>No result</h2>
+        </div>
+
+    } else
+    {
+        @Html.Partial("_result", Model);
+
+    }
+</section>
+
