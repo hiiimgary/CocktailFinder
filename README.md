@@ -6,6 +6,23 @@
 
 This web application is about cocktail recipes. You can search for your favorite beverages, see the recipe, the ingredients etc. You can access more features if you sign up. Once you created your account you will receive a confirmation e-mail and you have to verify your account. After logging in new tabs will appear on the navigation bar such as "For you", "Creator", "Favorites".
 
+![](creator.png)
+```
+Creator Page
+```
+![](search.png)
+```
+Search Page
+```
+![](toprated.png)
+```
+Top Rated Page
+```
+![](details.png)
+```
+Details Popup Window
+```
+
 ### For You
 ```
 If you liked cocktails the algorithm will give you drinks that you might like by comparing your taste to other users.
@@ -92,14 +109,37 @@ The Application has a role system and administrators can access the Admin Interf
 - New Repository created for Creator page
 - Prototype for Creator page (no SCSS, just logic)
 
-## TODO
-- Add logic to Search page
-- Add page for search result
-- Add popup window to view Cocktail details
-    - embed video
-- Populate Top rated page with the Top rated cocktails
-- Populate For You page with the Cocktails recommended for you
-- Implement CocktailCreator
-- Like And Rate Implementation
+```
+2020.05.15 
+```
+- Creator Page finished, everything works as intended
+- resultpage created for listing the cocktails
+- image upload to db - image download from db
+- youtube watchlink to embed function
+- newly created cocktail only shown in the search results if an admin verifies it.
+
+```
+2020.05.23  
+```
+- Popup window created for viewing the details
+- like function implemented
+- User favorites implemented
+- rating function implemented
+- Top Rated Page implemented
+
+```
+2020.05.24 
+```
+- Search Page logic implemented
+- search Result page done
+- For You page implemented (Because of the lack of Users, it seaches for similar cocktails by taste)
+- Fixed the issue with adminpage user editor.
+
+```
+2020.05.25 5:10 AM - The Project is Finished - (for now)
+```
+
+
+
 
 
